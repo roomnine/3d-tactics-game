@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://div7xjxow5o14"]
+
+[ext_resource type="PackedScene" uid="uid://inn3lsh10xw7" path="res://Scenes/player.tscn" id="1_2llne"]
+[ext_resource type="Script" uid="uid://blj18o0m23bnb" path="res://Scripts/camera_3d.gd" id="1_joc8x"]
+[ext_resource type="Script" uid="uid://bucmun2iqxaot" path="res://Scripts/player.gd" id="2_q12u6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
+
+[sub_resource type="Sky" id="Sky_2llne"]
+sky_material = SubResource("ProceduralSkyMaterial_505pi")
+
+[sub_resource type="Environment" id="Environment_q12u6"]
+background_mode = 2
+sky = SubResource("Sky_2llne")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jghel"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_slnnj"]
+material = SubResource("StandardMaterial3D_jghel")
+size = Vector2(1, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q12u6"]
+vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joc8x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_505pi"]
+material = SubResource("StandardMaterial3D_joc8x")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_505pi"]
+size = Vector3(10, 1, 10)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_q12u6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -0.887132, 0.461516, 0, -0.461516, -0.887132, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("character")]
+transform = Transform3D(1, 0, 0, 0, 0.871077, 0.491147, 0, -0.491147, 0.871077, 0, 4.61089, 10.0109)
+script = ExtResource("1_joc8x")
+character = NodePath("../Player")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+
+[node name="HoverIndicator" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.871077, -0.491147, 0, 0.491147, 0.871077, 0, 0.900393, -10.9849)
+mesh = SubResource("PlaneMesh_slnnj")
+skeleton = NodePath("../../NavigationRegion3D")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_q12u6")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_505pi")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor" groups=["floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 9.53674e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_505pi")
+
+[node name="Player" parent="." instance=ExtResource("1_2llne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16773, 0)
+script = ExtResource("2_q12u6")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://4lbn270a6bnp"]
+
+[ext_resource type="Texture2D" uid="uid://7uiynijhadog" path="res://Assets/Concept Art/ChatGPT Image Jun 14, 2025, 09_33_46 AM.png" id="1_finyj"]
+
+[node name="Concept Art" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(447, 326)
+scale = Vector2(0.599609, 0.591797)
+texture = ExtResource("1_finyj")
