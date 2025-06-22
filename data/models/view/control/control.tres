@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="ControlsResource" load_steps=2 format=3 uid="uid://b63cbutq4thq6"]
+
+[ext_resource type="Script" uid="uid://ulprdwbddamh" path="res://data/models/view/control/control_res.gd" id="1_fdrrh"]
+
+[resource]
+script = ExtResource("1_fdrrh")

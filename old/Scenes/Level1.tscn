@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://div7xjxow5o14"]
 
-[ext_resource type="PackedScene" uid="uid://inn3lsh10xw7" path="res://Scenes/player.tscn" id="1_2llne"]
-[ext_resource type="Script" uid="uid://blj18o0m23bnb" path="res://Scripts/camera_3d.gd" id="1_joc8x"]
-[ext_resource type="Script" uid="uid://bucmun2iqxaot" path="res://Scripts/player.gd" id="2_q12u6"]
+[ext_resource type="PackedScene" uid="uid://inn3lsh10xw7" path="res://old/Scenes/player.tscn" id="1_2llne"]
+[ext_resource type="Script" uid="uid://blj18o0m23bnb" path="res://old/Scripts/camera_3d.gd" id="1_joc8x"]
+[ext_resource type="Script" uid="uid://bucmun2iqxaot" path="res://old/Scripts/player.gd" id="2_q12u6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_505pi"]
 

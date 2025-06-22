@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch0m02djawl2e"]
+
+[ext_resource type="PackedScene" uid="uid://b353uk210ub1h" path="res://assets/maps/test_level/test_level.tscn" id="1_bfwe6"]
+[ext_resource type="PackedScene" uid="uid://lwa1opk88yxc" path="res://data/modules/controls/tactics_controls.tscn" id="1_s0khs"]
+
+[node name="Main" type="Node"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.55936, 0.61393, -0.556962, -0.00447317, 0.674135, 0.738595, 0.828913, -0.410649, 0.37983, 0.676547, 9.34668, 11.3977)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TacticsControls" parent="UI" instance=ExtResource("1_s0khs")]
+layout_mode = 1
+
+[node name="TestLevel" parent="." instance=ExtResource("1_bfwe6")]

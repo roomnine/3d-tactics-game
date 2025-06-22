@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CameraResource" load_steps=2 format=3 uid="uid://dllhgkpta5arr"]
+
+[ext_resource type="Script" uid="uid://sqipxxksj1v3" path="res://data/models/view/camera/camera_res.gd" id="1_h5k47"]
+
+[resource]
+script = ExtResource("1_h5k47")
+move_speed = 10
+rotation_speed = 10
+smoothing = 0.1
+camera_zoom_speed = 0.5
+zoom_smoothness = 0.65
+zoom_duration = 0.5
+min_zoom = 10.0
+max_zoom = 65.0
+boundary_radius = 15.0
+border_pan_px_threshold = 1.0
+mouse_pan_speed = 0.5
+joy_pan_speed = 0.1
+quad_snap_duration = 0.2
+vertical_rot = 0
+horizontal_rot = 0
+z_rot = 0
