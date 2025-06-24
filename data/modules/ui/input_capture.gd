@@ -25,5 +25,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	serv.handle_input(event)
 
 
-func project_mouse_position(collision_mask: int, is_joystick: bool) -> Dictionary:
+func project_mouse_position(collision_mask: int, is_joystick: bool) -> Object:
 	return serv.project_mouse_position(collision_mask, is_joystick, self)

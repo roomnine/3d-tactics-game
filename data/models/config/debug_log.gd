@@ -35,9 +35,9 @@ static var debug_dict: Dictionary = {
 		"color": "yellow",
 		"type": "concat1"
 		},
-	"pawn": {
+	"unit": {
 		"tmp": null, "old": null,
-		"message": "[ 👾 ] New pawn selected: ", 
+		"message": "[ 👾 ] New unit selected: ", 
 		"color": "green",
 		"type": "concat1"
 		},

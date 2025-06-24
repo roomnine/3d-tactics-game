@@ -42,10 +42,10 @@ func toggle_enemy_stats(enemy_node: Node) -> void:
 				p.res.unit_hud_enabled = false
 
 
-## Checks if all player pawns are properly configured
+## Checks if all player units are properly configured
 ##
 ## @param player: The TacticsPlayer node to check
-## @return: Whether all pawns are configured
+## @return: Whether all units are configured
 func is_unit_configured(player: PlayerUnits) -> bool:
 	for unit: DefaultUnit in player.get_children():
 		if unit is DefaultUnit:
@@ -75,7 +75,7 @@ func show_available_movements() -> void:
 	res.stage = res.STAGE_SELECT_LOCATION
 
 
-## Displays attackable targets for the current pawn
+## Displays attackable targets for the current unit
 func display_attackable_targets() -> void:
 	board.reset_all_tile_markers()
 	var p: DefaultUnit = res.curr_unit

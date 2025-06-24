@@ -65,7 +65,7 @@ func get_pathfinding_tilestack(to: Tile) -> Array:
 	var _path_tiles_stack: Array = []
 	
 	while to:
-		to.hover = true
+		to.is_hovered = true
 		_path_tiles_stack.push_front(to.global_position)
 		to = to.pf_root
 		
@@ -88,7 +88,7 @@ func get_pathfinding_tilestack(to: Tile) -> Array:
 				#if _n.pf_distance > 0 and not _n.is_taken():
 					#_nearest_target = _n
 	#
-	#while _nearest_target and not _nearest_target.reachable: 
+	#while _nearest_target and not _nearest_target.is_reachable: 
 		#_nearest_target = _nearest_target.pf_root
 	#
 	#if _nearest_target:
@@ -104,9 +104,9 @@ func get_pathfinding_tilestack(to: Tile) -> Array:
 #func get_weakest_attackable_unit(unit_arr: Array) -> Unit:
 	#var _weakest: Unit = null
 	#
-	#for _p: Unit in pawn_arr:
+	#for _p: Unit in unit_arr:
 		#if not _weakest or _p.stats.curr_health < _weakest.stats.curr_health:
-			#if _p.stats.curr_health > 0 and _p.get_tile().attackable:
+			#if _p.stats.curr_health > 0 and _p.get_tile().is_attackable:
 				#_weakest = _p
 	#
 	#return _weakest
@@ -116,10 +116,10 @@ func get_pathfinding_tilestack(to: Tile) -> Array:
 ## [param tile] The tile to mark as hovered
 func mark_hover_tile(board: TacticsBoard, tile: Tile) -> void:
 	for _t: Tile in board.get_node("Tiles").get_children():
-		_t.hover = false
+		_t.is_hovered = false
 	
 	if tile:
-		tile.hover = true
+		tile.is_hovered = true
 
 ## Mark reachable tiles within a certain distance from a root tile
 ## [param board] The TacticsBoard containing the tiles
@@ -128,11 +128,11 @@ func mark_hover_tile(board: TacticsBoard, tile: Tile) -> void:
 func mark_reachable_tiles(board: TacticsBoard, root: Tile, distance: float) -> void:
 	for _t: Tile in board.get_node("Tiles").get_children():
 		var _has_dist: bool = _t.pf_distance > 0
-		var _reachable: bool = _t.pf_distance <= distance
-		var _not_taken: bool = not _t.is_taken()
+		var _is_reachable: bool = _t.pf_distance <= distance
+		var _is_not_taken: bool = not _t.is_taken()
 		var _is_root: bool = _t == root
 		
-		_t.reachable = (_has_dist and _reachable and _not_taken) or _is_root
+		_t.is_reachable = (_has_dist and _is_reachable and _is_not_taken) or _is_root
 
 ## Mark attackable tiles within a certain distance from a root tile
 ## [param board] The TacticsArena containing the tiles
@@ -141,7 +141,7 @@ func mark_reachable_tiles(board: TacticsBoard, root: Tile, distance: float) -> v
 func mark_attackable_tiles(board: TacticsBoard, root: Tile, distance: float) -> void:
 	for _t: Tile in board.get_node("Tiles").get_children():
 		var _has_dist: bool = _t.pf_distance > 0
-		var _reachable: bool = _t.pf_distance <= distance
+		var _is_reachable: bool = _t.pf_distance <= distance
 		var _is_root: bool = _t == root
 		
-		_t.attackable = _has_dist and _reachable or _is_root
+		_t.is_attackable = _has_dist and _is_reachable or _is_root

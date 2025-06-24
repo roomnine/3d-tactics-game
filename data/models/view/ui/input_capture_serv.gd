@@ -92,16 +92,16 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 
-func project_mouse_position(collision_mask: int, is_joystick: bool, input_capture: InputCapture) -> Dictionary:
-	if !res:
-		return {}
+func project_mouse_position(collision_mask: int, is_joystick: bool, input_capture: InputCapture) -> Object:
+	if not input_capture:
+		return null
 
 	var camera: Camera3D = input_capture.get_viewport().get_camera_3d()
-	res.mouse_position = input_capture.get_viewport().get_mouse_position()
-	var pointer_origin: Vector2 = res.mouse_position if not is_joystick else input_capture.get_viewport().size / 2
+	var mouse_position: Vector2 = input_capture.get_viewport().get_mouse_position()
+	var pointer_origin: Vector2 = mouse_position if not is_joystick else input_capture.get_viewport().size / 2
 
 	var from: Vector3 = camera.project_ray_origin(pointer_origin)
-	var to: Vector3 = from + camera.project_ray_normal(pointer_origin) * res.RAY_LENGTH
+	var to: Vector3 = from + camera.project_ray_normal(pointer_origin) * 1000.0  # Adjust ray length if needed
 
 	if DebugLog.visual_debug:
 		draw_debug_ray(from, to, input_capture.debug_ray_mesh, input_capture)
@@ -109,21 +109,15 @@ func project_mouse_position(collision_mask: int, is_joystick: bool, input_captur
 	var ray_query := PhysicsRayQueryParameters3D.create(from, to, collision_mask, [])
 	var result := input_capture.get_world_3d().direct_space_state.intersect_ray(ray_query)
 
-	if result and result.has("collider") and result["collider"] is GridMap:
-		var gridmap: GridMap = result["collider"]
-		var world_pos: Vector3 = result["position"]
-		var local_pos: Vector3 = gridmap.to_local(world_pos)
-		var cell: Vector3i = gridmap.local_to_map(local_pos)
-		var tile_id: int = gridmap.get_cell_item(cell)
+	if result and result.has("collider"):
+		var collider = result["collider"]
+		
+		if collider is Tile:
+			return collider
+		elif collider is DefaultUnit:
+			return collider
 
-		return {
-			"cell": cell,
-			"tile_id": tile_id,
-			"position": world_pos,
-			"gridmap": gridmap
-		}
-
-	return {}
+	return null
 
 
 func setup_debug_ray(parent: Node3D) -> MeshInstance3D:

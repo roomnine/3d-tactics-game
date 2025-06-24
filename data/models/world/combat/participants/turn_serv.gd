@@ -44,7 +44,7 @@ func handle_player_turn(delta: float, player: PlayerUnits, participant: Particip
 		res.STAGE_MOVE_UNIT: player.move_unit()
 		res.STAGE_DISPLAY_TARGETS: player.display_attackable_targets()
 		res.STAGE_SELECT_ATTACK_TARGET: controls.select_unit_to_attack()
-		res.STAGE_ATTACK: participant.serv.combat_service.attack_pawn(delta, true)
+		res.STAGE_ATTACK: participant.serv.combat_service.attack_unit(delta, true)
 
 
 ## Handles the opponent's turn
@@ -90,6 +90,6 @@ func reset_turn(parent: Node3D) -> void:
 ##
 ## @param player: The TacticsPlayer node
 func skip_turn(player: DefaultUnit) -> void:
-	for pawn: DefaultUnit in player.get_children():
-		pawn.end_unit_turn()
+	for unit: DefaultUnit in player.get_children():
+		unit.end_unit_turn()
 	res.stage = res.STAGE_SELECT_UNIT

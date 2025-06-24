@@ -1,6 +1,6 @@
 class_name UnitMovementService
 extends RefCounted
-## Service class for handling pawn movement in the tactics game
+## Service class for handling unit movement in the tactics game
 
 
 ## Rotates the unit to face the given direction

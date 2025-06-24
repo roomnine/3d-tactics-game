@@ -52,12 +52,12 @@ func _physics_process(delta: float) -> void:
 #endregion
 
 #region: --- Methods ---
-## TODO: Checks requirements to begin the first turn.[br]Used by [PlayerUnits], [EnemyUnits]
+## Checks requirements to begin the first turn.[br]Used by [PlayerUnits], [EnemyUnits]
 func _init_turn() -> void:
 	if participant.is_configured(player) and participant.is_configured(enemy):
 		turn_stage = 1 # Move to turn handling stage if both player and enemy are configured
 
-## TODO: Turn state management.[br]Used by [PlayerUnits], [EnemyUnits]
+## Turn state management.[br]Used by [PlayerUnits], [EnemyUnits]
 func _handle_turn(delta: float) -> void:
 	DebugLog.debug_nospam("player_can_act", participant.can_act(player))
 	

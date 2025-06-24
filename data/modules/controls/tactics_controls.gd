@@ -19,10 +19,10 @@ var curr_unit: DefaultUnit = null
 ## Service handling control logic
 var serv: TacticsControlsService
 
-## Texture for Xbox controller layout
-@onready var layout_xbox: Texture2D = load("res://assets/textures/ui/labels/controls-ui-xbox.png")
-## Texture for PC controls layout
-@onready var layout_pc: Texture2D = load("res://assets/textures/ui/labels/controls-ui.png")
+### Texture for Xbox controller layout
+#@onready var layout_xbox: Texture2D = load("res://assets/textures/ui/labels/controls-ui-xbox.png")
+### Texture for PC controls layout
+#@onready var layout_pc: Texture2D = load("res://assets/textures/ui/labels/controls-ui.png")
 ## Node for capturing mouse clicks
 @onready var input_capture: InputCapture = $InputCapture
 #endregion
@@ -75,9 +75,9 @@ func is_mouse_hovering_ui_elem() -> bool:
 	return serv.is_mouse_hovering_ui_elem(self)
 
 
-## Sets the visibility of the actions menu
-func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
-	serv.set_actions_menu_visibility(v, p, self)
+## TODO: Sets the visibility of the actions menu
+#func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
+	#serv.set_actions_menu_visibility(v, p, self)
 
 
 ## Gets the 3D position of the mouse in the game world
@@ -86,7 +86,7 @@ func get_3d_canvas_mouse_position(collision_mask: int) -> Object:
 
 
 ## Selects a unit for the player
-func select_unit(player: DefaultUnit) -> void:
+func select_unit(player: PlayerUnits) -> void:
 	serv.select_unit(player, self)
 
 

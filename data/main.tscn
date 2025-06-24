@@ -5,8 +5,10 @@
 
 [node name="Main" type="Node"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.55936, 0.61393, -0.556962, -0.00447317, 0.674135, 0.738595, 0.828913, -0.410649, 0.37983, 0.676547, 9.34668, 11.3977)
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="TempCamera" type="Camera3D" parent="Camera"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 8, 14)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

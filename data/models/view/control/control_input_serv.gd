@@ -5,7 +5,7 @@ extends RefCounted
 ## Reference to the TacticsControlsResource.
 var controls: ControlsResource
 ## Node for capturing mouse clicks.
-var input_capture: Node
+var input_capture: Node3D
 
 
 ## Initializes the TacticsControlsInputService with necessary resources and nodes.
@@ -39,17 +39,13 @@ func get_3d_canvas_mouse_position(collision_mask: int, ctrl: TacticsControls) ->
 
 ## Checks if the mouse is hovering over a UI element.
 ## Returns true if the mouse is over any of the specified UI elements.
-func is_mouse_hovering_ui_elem(
-		ctrl: TacticsControls, elm: Array[String] = TacticsConfig.ui_elem) -> bool:
+func is_mouse_hovering_ui_elem(ctrl: TacticsControls, elm: Array[String] = TacticsConfig.ui_elem) -> bool:
 	for e: String in elm:
-		if ctrl.get_node(e).visible:
+		var node = ctrl.get_node_or_null(e)
+		if node and node.visible:
 			match e:
-				"%Actions":
-					for action: Button in ctrl.get_node(e).get_children():
-						if action.get_global_rect().has_point(ctrl.get_viewport().get_mouse_position()): 
-							return true
-				"%Hints":
-					for hint: TextureRect in ctrl.get_node(e).get_children():
-						if hint.get_global_rect().has_point(ctrl.get_viewport().get_mouse_position()): 
+				"Actions":  # <- Use correct relative path here
+					for action: Button in node.get_children():
+						if action.get_global_rect().has_point(ctrl.get_viewport().get_mouse_position()):
 							return true
 	return false

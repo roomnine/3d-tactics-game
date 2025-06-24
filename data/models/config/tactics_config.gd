@@ -3,7 +3,7 @@ extends Node3D
 ## Tactics system configuration.
 ##
 ## This class contains static properties and methods for configuring various aspects
-## of the tactics system, including colors, materials, pawn properties, and view settings.
+## of the tactics system, including colors, materials, unit properties, and view settings.
 
 #region: --- Props ---
 ## Dictionary of color codes used in the tactics system.
@@ -24,7 +24,7 @@ static var mat_color: Dictionary = {
 	"hover_attackable": create_material(str(color.coral_red)),
 }
 
-## Dictionary of pawn-related configuration values.
+## Dictionary of unit-related configuration values.
 static var unit: Dictionary = {
 	"base_walk_speed": 8, ## Base speed for unit movement on the board
 	"animation_frames": 1, ## Number of frames for unit animations

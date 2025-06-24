@@ -2,7 +2,7 @@ class_name Status
 extends Node
 ## The expertise of a game actor.
 ##
-## Assigns a set of stats to a pawn, 
+## Assigns a set of stats to a unit, 
 
 ## Resource containing initial stats for the actor
 @export var starting_stats: StatsResource

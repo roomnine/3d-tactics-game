@@ -18,7 +18,7 @@ var status: String
 var level: int = 1
 
 #region Base Stats
-## Movement Points (The radius the pawn can move)
+## Movement Points (The radius the unit can move)
 var movement: int
 ## Jump height
 var jump: int
