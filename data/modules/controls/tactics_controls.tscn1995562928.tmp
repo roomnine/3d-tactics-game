@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://lwa1opk88yxc"]
+
+[ext_resource type="Script" uid="uid://4nn8p88x82av" path="res://data/modules/controls/tactics_controls.gd" id="1_oobjx"]
+[ext_resource type="PackedScene" uid="uid://d0rciydb7u8t3" path="res://data/modules/ui/input_capture.tscn" id="2_jotyk"]
+
+[node name="TacticsControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oobjx")
+
+[node name="InputCapture" parent="." instance=ExtResource("2_jotyk")]
+
+[node name="Actions" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Move" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move"
+
+[node name="Attack" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack"
+
+[node name="Skill" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skill	"
+
+[node name="Cancel" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="EndTurn" type="Button" parent="Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "End Turn"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InputCaptureResource" load_steps=2 format=3 uid="uid://fkhgc0s3dys7"]
+
+[ext_resource type="Script" uid="uid://foheqn7u8u0p" path="res://data/models/view/ui/input_capture_res.gd" id="1_yrj74"]
+
+[resource]
+script = ExtResource("1_yrj74")
+mouse_sensitivity = 1.0
+camera_move_speed = 10.0
+camera_rotate_speed = 5.0
+camera_zoom_speed = 0.1

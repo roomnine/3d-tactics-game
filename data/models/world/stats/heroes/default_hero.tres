@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatsResource" load_steps=2 format=3 uid="uid://dskivfudtrtat"]
+
+[ext_resource type="Script" uid="uid://4b53xt302scn" path="res://data/models/world/stats/stats_res.gd" id="1_bmotw"]
+
+[resource]
+script = ExtResource("1_bmotw")
+override_name = "DefaultName"
+status = ""
+strategy = 0
+level = 1
+sprite = "res://assets/textures/actors/"
+movement = 3
+jump = null
+max_health = 5
+attack_range = 1
+attack_power = 1
+metadata/_custom_type_script = "uid://4b53xt302scn"
