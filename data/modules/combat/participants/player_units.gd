@@ -9,7 +9,7 @@ extends Participants
 var player_serv: PlayerService
 
 
-## Initializes the TacticsPlayer node
+## Initializes the PlayerUnits node
 func _ready() -> void:
 	# Call the parent class's _ready function
 	super._ready()

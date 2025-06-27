@@ -8,8 +8,8 @@ var movement: UnitMovementService
 #var combat: UnitCombatService
 ## TODO: Service for handling unit animations
 #var animation: UnitAnimationService
-## TODO: Service for handling unit HUD operations
-#var ui: UnitHudService
+## Service for handling unit HUD operations
+var ui: UnitHudService
 ## TODO: Reference to the unit's sprite
 #var character: UnitSprite
 
@@ -17,8 +17,8 @@ var movement: UnitMovementService
 func _init() -> void:
 	movement = UnitMovementService.new()
 	#combat = UnitCombatService.new()
-	#animation = UnitAnimationService.new()
-	#ui = UnitHudService.new()
+	# TODO: animation = UnitAnimationService.new()
+	ui = UnitHudService.new()
 
 ## TODO: Sets up the unit service, particularly the animation service
 ##

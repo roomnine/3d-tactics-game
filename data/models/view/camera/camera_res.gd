@@ -44,7 +44,7 @@ static var zoom_speed: float
 ## Minimum zoom level (closest)
 @export_range(0.1, 50) var min_zoom: float = 1.0
 ## Maximum zoom level (farthest)
-@export_range(10.0, 100.0) var max_zoom: float = 10.0
+@export_range(10.0, 100.0) var max_zoom: float = 20.0
 ## Current Field of View
 var current_fov: float = 50.0
 ## Target Field of View for smooth transition
@@ -54,7 +54,7 @@ var target_fov: float = 50.0
 #region Panning
 @export_category("Panning")
 ## Radius of the boundary for camera movement
-@export var boundary_radius: float = 10.0
+@export var boundary_radius: float = 10
 ## Center point of the boundary
 var boundary_center: Vector3 = Vector3.ZERO
 ## Threshold for edge panning in pixels

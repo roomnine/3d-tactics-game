@@ -14,8 +14,8 @@ var board: BoardResource
 var input_capture: Node
 ## Service for handling input-related operations.
 var input_service: ControlsInputService
-## TODO: Service for managing UI-related operations.
-#var ui_service: TacticsUIService
+## Service for managing UI-related operations.
+var ui_service: UiService
 ## TODO: Service for handling camera-related operations.
 #var camera_service: ControlsCameraService
 ## Service for managing unit selection operations.
@@ -30,7 +30,7 @@ func _init(_controls: ControlsResource, _t_cam: CameraResource, _participant: Pa
 	board = _board
 	input_capture = _inputk_capture
 	input_service = ControlsInputService.new(controls, input_capture)
-	#TODO: ui_service = TacticsUIService.new(controls)
+	ui_service = UiService.new(controls)
 	#TODO: camera_service = TacticsControlsCameraService.new(t_cam)
 	selection_service = ControlsSelectionService.new(participant, board, controls, t_cam, input_service)
 
@@ -40,7 +40,7 @@ func setup(ctrl: TacticsControls) -> void:
 	if not controls:
 		push_error("TacticsControls needs a ControlResource from /data/models/view/controls/tactics/")
 	else:
-		#TODO: controls.connect("called_set_actions_menu_visibility", ctrl.set_actions_menu_visibility)
+		controls.connect("called_set_actions_menu_visibility", ctrl.set_actions_menu_visibility)
 		controls.connect("called_set_cursor_shape_to_move", ctrl.set_cursor_shape_to_move)
 		controls.connect("called_set_cursor_shape_to_arrow", ctrl.set_cursor_shape_to_arrow)
 		controls.connect("called_select_unit", ctrl.select_unit)
@@ -64,9 +64,9 @@ func handle_input(event: InputEvent) -> void:
 	input_service.handle_input(event)
 
 
-## TODO: Delegates setting actions menu visibility to the UI service.
-#func set_actions_menu_visibility(v: bool, p: DefaultUnit, ctrl: TacticsControls) -> void:
-	#ui_service.set_actions_menu_visibility(v, p, ctrl)
+## Delegates setting actions menu visibility to the UI service.
+func set_actions_menu_visibility(v: bool, p: DefaultUnit, ctrl: TacticsControls) -> void:
+	ui_service.set_actions_menu_visibility(v, p, ctrl)
 
 
 ## Delegates unit selection to the unit selection service.

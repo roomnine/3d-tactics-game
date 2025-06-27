@@ -33,8 +33,8 @@ func _ready() -> void:
 	
 	# Initialize node references
 	participant = $Participants
-	player = %PlayerUnits
-	enemy = %EnemyUnits
+	player = $Participants/PlayerUnits
+	enemy = $Participants/EnemyUnits
 	board = $TestTacticsBoard
 	
 	board.configure_tiles() # Configure board tiles

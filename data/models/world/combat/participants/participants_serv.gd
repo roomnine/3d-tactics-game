@@ -13,7 +13,7 @@ var controls: ControlsResource
 ## Service handling turn-related logic
 var turn_service: ParticipantsTurnService
 ## TODO: Service handling combat-related logic
-#var combat_service: TacticsParticipantCombatService
+#var combat_service: ParticipantCombatService
 
 
 ## Initializes the ParticipantsService
@@ -26,7 +26,7 @@ func _init(_res: ParticipantsResource, _camera: CameraResource, _controls: Contr
 	camera = _camera
 	controls = _controls
 	turn_service = ParticipantsTurnService.new(res, camera, controls)
-	#combat_service = ParticipantCombatService.new(res, camera, controls)
+	#TODO: combat_service = ParticipantCombatService.new(res, camera, controls)
 
 
 ## Sets up the ParticipantsService
@@ -41,7 +41,7 @@ func setup(_participant: Participants) -> void:
 		push_error("Participants needs a ParticipantsResource from /data/models/world/combat/participant/")
 
 
-## TODO: Handles the participant's action
+## Handles the participant's action
 ##
 ## @param delta: Time elapsed since the last frame
 ## @param is_player: Whether the acting participant is the player
@@ -51,12 +51,12 @@ func act(delta: float, is_player: bool, parent: Node3D, participant: Participant
 	DebugLog.debug_nospam("participant_turn", is_player)
 	DebugLog.debug_nospam("turn_stage", res.stage)
 	
-	#if is_player:
-		#var player: TacticsPlayer = parent as TacticsPlayer
-		#turn_service.handle_player_turn(delta, player, participant)
-	#else:
-		#var opponent: TacticsOpponent = parent as TacticsOpponent
-		#turn_service.handle_opponent_turn(delta, opponent, participant)
+	if is_player:
+		var player: PlayerUnits = parent as PlayerUnits
+		turn_service.handle_player_turn(delta, player, participant)
+	else:
+		var enemy: EnemyUnits = parent as EnemyUnits
+		turn_service.handle_enemy_turn(delta, enemy, participant)
 
 
 ## Configures the service with camera and control resources
@@ -84,15 +84,15 @@ func can_act(parent: Node3D) -> bool:
 	return turn_service.can_act(parent)
 
 
-## TODO: Resets the participant's turn
+## Resets the participant's turn
 ##
 ## @param parent: The parent node of the participant
-#func reset_turn(parent: Node3D) -> void:
-	#turn_service.reset_turn(parent)
+func reset_turn(parent: Node3D) -> void:
+	turn_service.reset_turn(parent)
 
 
-## TODO: Skips the participant's turn
+## TODO: Ends the participant's turn
 ##
-## @param player: The TacticsPlayer node
-#func skip_turn(player: TacticsPlayer) -> void:
-	#turn_service.skip_turn(player)
+## @param player: The PlayerUnits node
+#func end_turn(player: PlayerUnits) -> void:
+	#turn_service.end_turn(player)

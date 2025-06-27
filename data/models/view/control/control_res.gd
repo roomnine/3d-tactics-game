@@ -31,9 +31,9 @@ var actions: Dictionary = {
 	"EndTurn": "_player_wants_to_end_turn"
 }
 
-## TODO: Sets the visibility of the actions menu.
-#func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
-	#called_set_actions_menu_visibility.emit(v, p)
+## Sets the visibility of the actions menu.
+func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
+	called_set_actions_menu_visibility.emit(v, p)
 
 
 ## Initiates camera movement.

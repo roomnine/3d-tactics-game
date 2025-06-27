@@ -22,7 +22,7 @@ func _init(_res: ParticipantsResource, _camera: CameraResource, _controls: Contr
 	res = _res
 	camera = _camera
 	controls = _controls
-	board = board
+	board = _board
 
 
 ## Toggles the display of enemy unit stats
@@ -31,7 +31,7 @@ func _init(_res: ParticipantsResource, _camera: CameraResource, _controls: Contr
 func toggle_enemy_stats(enemy_node: Node) -> void:
 	var enemy_units: Array = enemy_node.get_children()
 	
-	if res.display_opponent_stats:
+	if res.display_enemy_stats:
 		for p: DefaultUnit in enemy_units:
 			p.res.unit_hud_enabled = true
 			p.show_unit_stats(true)
@@ -82,7 +82,7 @@ func display_attackable_targets() -> void:
 	if not p:
 		return
 	
-	res.display_opponent_stats = true
+	res.display_enemy_stats = true
 	
 	camera.target = p
 	board.process_surrounding_tiles(p.get_tile(), float(p.stats.attack_range))

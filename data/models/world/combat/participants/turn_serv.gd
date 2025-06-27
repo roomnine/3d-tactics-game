@@ -44,26 +44,26 @@ func handle_player_turn(delta: float, player: PlayerUnits, participant: Particip
 		res.STAGE_MOVE_UNIT: player.move_unit()
 		res.STAGE_DISPLAY_TARGETS: player.display_attackable_targets()
 		res.STAGE_SELECT_ATTACK_TARGET: controls.select_unit_to_attack()
-		res.STAGE_ATTACK: participant.serv.combat_service.attack_unit(delta, true)
+		#TODO: res.STAGE_ATTACK: participant.serv.combat_service.attack_unit(delta, true)
 
 
-## Handles the opponent's turn
+## Handles the enemy's turn
 ##
 ## @param delta: Time elapsed since the last frame
-## @param opponent: The EnemyUnits node
+## @param enemy: The EnemyUnits node
 ## @param participant: The Participants node
-func handle_opponent_turn(delta: float, opponent: EnemyUnits, participant: Participants) -> void:
+func handle_enemy_turn(delta: float, enemy: EnemyUnits, participant: Participants) -> void:
 	res.targets = participant.get_node("%TacticsPlayer")
 	controls.set_actions_menu_visibility(false, null)
 	if res.stage > 4:
 		res.stage = 0
 		DebugLog.debug_nospam("turn_stage", res.stage)
 	match res.stage:
-		res.STAGE_SELECT_UNIT: opponent.choose_unit()
-		res.STAGE_SHOW_ACTIONS: opponent.chase_nearest_enemy()
-		res.STAGE_SHOW_MOVEMENTS: opponent.is_unit_done_moving()
-		res.STAGE_SELECT_LOCATION: opponent.choose_unit_to_attack()
-		res.STAGE_MOVE_UNIT: participant.serv.combat_service.attack_unit(delta, false)
+		res.STAGE_SELECT_UNIT: enemy.choose_unit()
+		res.STAGE_SHOW_ACTIONS: enemy.chase_nearest_enemy()
+		res.STAGE_SHOW_MOVEMENTS: enemy.is_unit_done_moving()
+		res.STAGE_SELECT_LOCATION: enemy.choose_unit_to_attack()
+		#TODO: res.STAGE_MOVE_UNIT: participant.serv.combat_service.attack_unit(delta, false)
 
 
 ## Checks if the participant can perform an action
@@ -71,8 +71,8 @@ func handle_opponent_turn(delta: float, opponent: EnemyUnits, participant: Parti
 ## @param parent: The parent node of the participant
 ## @return: Whether the participant can act
 func can_act(parent: Node3D) -> bool:
-	for p: DefaultUnit in parent.get_children():
-		if p.can_act():
+	for unit: DefaultUnit in parent.get_children():
+		if unit.can_act():
 			return true
 	return false
 
@@ -86,10 +86,10 @@ func reset_turn(parent: Node3D) -> void:
 		p.reset_turn()
 
 
-## Skips the participant's turn
+## Ends the participant's turn
 ##
-## @param player: The TacticsPlayer node
-func skip_turn(player: DefaultUnit) -> void:
+## @param player: The PlayerUnits node
+func end_turn(player: PlayerUnits) -> void:
 	for unit: DefaultUnit in player.get_children():
 		unit.end_unit_turn()
 	res.stage = res.STAGE_SELECT_UNIT

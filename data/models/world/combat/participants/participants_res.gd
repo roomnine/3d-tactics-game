@@ -2,10 +2,10 @@ class_name ParticipantsResource
 extends Resource
 ## Attributes & signals of the tactics participant.
 ## 
-## Dependency of: [TacticsParticipant]
+## Dependency of: [Participants]
 
 ## Signal emitted when a turn is skipped
-signal called_skip_turn
+signal called_end_turn
 
 #region Stage Selection
 ## Constant for the unit selection stage
@@ -38,12 +38,12 @@ var attackable_unit: DefaultUnit = null
 ## The node containing the target units
 var targets: Node = null
 
-## Flag to control the display of opponent stats
-var display_opponent_stats: bool = false
+## Flag to control the display of enemy stats
+var display_enemy_stats: bool = false
 ## Flag indicating if the turn has just started
 var turn_just_started: bool = true
 
 
-## Emits the skip_turn signal
-func skip_turn() -> void:
-	called_skip_turn.emit()
+## Emits the end_turn signal
+func end_turn() -> void:
+	called_end_turn.emit()

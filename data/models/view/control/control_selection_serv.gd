@@ -25,22 +25,22 @@ func _init(_participant: ParticipantsResource, _board: BoardResource, _controls:
 
 
 ## Handles the selection of a unit.
-func select_unit(player: PlayerUnits, ctrl: TacticsControls) -> void:
+func select_unit(player: PlayerUnits, control: TacticsControls) -> void:
 	board.reset_all_tile_markers()
-	if ctrl.curr_unit:
+	if control.curr_unit:
 		controls.set_actions_menu_visibility(false, participant.curr_unit)
-		ctrl.curr_unit.show_unit_stats(false)
+		control.curr_unit.show_unit_stats(false)
 	
-	ctrl.curr_unit = _select_hovered_unit(ctrl)
-	if not ctrl.curr_unit:
+	control.curr_unit = _select_hovered_unit(control)
+	if not control.curr_unit:
 		return
 	else:
-		ctrl.curr_unit.show_unit_stats(true)
+		control.curr_unit.show_unit_stats(true)
 	
-	if Input.is_action_just_pressed("ui_accept") and ctrl.curr_unit.can_act():
-		if ctrl.curr_unit in player.get_children():
-			t_cam.target = ctrl.curr_unit
-			participant.curr_unit = ctrl.curr_unit
+	if Input.is_action_just_pressed("ui_accept") and control.curr_unit.can_act():
+		if control.curr_unit in player.get_children():
+			t_cam.target = control.curr_unit
+			participant.curr_unit = control.curr_unit
 			controls.set_actions_menu_visibility(true, participant.curr_unit)
 			participant.stage = 1
 
@@ -69,7 +69,7 @@ func _select_hovered_tile(ctrl: TacticsControls) -> Tile:
 	return tile
 
 
-## TODO: Updates the tile hovered by the mouse.
+## Updates the tile hovered by the mouse.
 func update_hovered_tile(ctrl: TacticsControls) -> void:
 	var tile: Tile = _select_hovered_tile(ctrl)
 	if tile != last_hovered_tile:

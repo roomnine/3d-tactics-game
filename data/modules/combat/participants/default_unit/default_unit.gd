@@ -23,7 +23,7 @@ func _ready() -> void:
 	res = DefaultUnitResource.new()
 	serv = DefaultUnitService.new()
 	#TODO: serv.setup(self)
-	#TODO: controls.set_actions_menu_visibility(false, self)
+	controls.set_actions_menu_visibility(false, self)
 	#TODO: show_unit_stats(false)
 
 
@@ -74,3 +74,10 @@ func can_unit_move() -> bool:
 ## @return: Whether the unit can attack and is alive
 func can_unit_attack() -> bool:
 	return res.can_attack and is_alive()
+
+
+## Shows or hides unit stats
+##
+## @param v: visibility yes or no
+func show_unit_stats(v: bool) -> void:
+	$DefaultUnitSprite/CharacterUI.visible = v
