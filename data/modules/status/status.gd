@@ -1,6 +1,6 @@
 class_name Status
 extends Node
-## The expertise of a game actor.
+## The status of a game actor.
 ##
 ## Assigns a set of stats to a unit, 
 

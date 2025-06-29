@@ -17,7 +17,7 @@ func _init(_res: CameraResource, _controls: ControlsResource):
 
 ## Move the camera based on input and apply boundary constraints
 func move_camera(h: float, v: float, delta: float, camera: TacticsCamera) -> void:
-	if res.target or (h == 0 and v == 0):
+	if h == 0 and v == 0:
 		return
 	
 	# Calculate local direction relative to camera

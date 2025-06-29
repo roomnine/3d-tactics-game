@@ -48,12 +48,7 @@ func _process(delta: float) -> void:
 	
 	match is_hovered:
 		true: # If hover is true, decide which material to use based on the tile's state
-			if is_reachable:
-				tile.material_override = hover_reachable_mat
-			elif is_attackable:
-				tile.material_override = hover_attackable_mat
-			else:
-				tile.material_override = hover_mat
+			tile.material_override = hover_mat
 		false: # If hover is false, this block decides between two materials
 			if is_reachable:
 				tile.material_override = hover_reachable_mat

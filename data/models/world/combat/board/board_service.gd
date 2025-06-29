@@ -50,9 +50,9 @@ func process_surrounding_tiles(root_tile: Tile, height: float, allies_on_map: Ar
 			_neighbor.pf_distance = _curr_tile.pf_distance + 1
 			_tiles_process_q.push_back(_neighbor)
 		
-		for _neighbor: Tile in _curr_tile.get_neighbors(height):
+		for _neighbor: Tile in _curr_tile.get_neighboring_tiles(height):
 			if not _neighbor.pf_root and _neighbor != root_tile:
-				if not _neighbor.is_taken():
+				if not _neighbor.is_tile_occupied():
 					_add_to_tiles_list.call(_neighbor)
 				elif not (allies_on_map.size() > 0):
 					if not (_neighbor.get_tile_occupier() in allies_on_map):
@@ -129,10 +129,10 @@ func mark_reachable_tiles(board: TacticsBoard, root: Tile, distance: float) -> v
 	for _t: Tile in board.get_node("Tiles").get_children():
 		var _has_dist: bool = _t.pf_distance > 0
 		var _is_reachable: bool = _t.pf_distance <= distance
-		var _is_not_taken: bool = not _t.is_taken()
+		var _is_not_occupied: bool = not _t.is_tile_occupied()
 		var _is_root: bool = _t == root
 		
-		_t.is_reachable = (_has_dist and _is_reachable and _is_not_taken) or _is_root
+		_t.is_reachable = (_has_dist and _is_reachable and _is_not_occupied) or _is_root
 
 ## Mark attackable tiles within a certain distance from a root tile
 ## [param board] The TacticsArena containing the tiles

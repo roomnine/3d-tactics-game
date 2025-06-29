@@ -18,7 +18,7 @@ var serv: ParticipantsService
 ## Reference to the PlayerUnits node
 @onready var player: PlayerUnits = %PlayerUnits
 ## Reference to the EnemyUnits node
-@onready var enemy: EnemyUnits = %Enemyunits
+@onready var enemy: EnemyUnits = %EnemyUnits
 
 
 ## Initializes the TacticsParticipant node

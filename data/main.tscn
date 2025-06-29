@@ -7,10 +7,8 @@
 [node name="Main" type="Node"]
 
 [node name="Camera" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="TacticsCamera" parent="Camera" instance=ExtResource("1_vbr7t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

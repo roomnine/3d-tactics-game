@@ -4,7 +4,7 @@ extends Resource
 
 #region Properties
 ## Override name for the actor
-@export var override_name: String = "DefaultName"
+@export var override_name: String = ""
 ## Status of the actor
 @export var status: String = ""
 
@@ -15,6 +15,8 @@ extends Resource
 @export var level: int = 1
 ## Path to the actor's sprite
 @export_file("*.png") var sprite: String = "res://assets/textures/actors/"
+## Default color for CapsuleMesh
+@export var default_color = Color(1, 1, 1)
 
 #region Base Stats
 @export_category("Base")

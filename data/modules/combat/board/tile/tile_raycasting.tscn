@@ -24,6 +24,22 @@ target_position = Vector3(0, -20, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 target_position = Vector3(0, -20, 0)
 
+[node name="NW" type="RayCast3D" parent="Neighbors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+target_position = Vector3(0, -20, 0)
+
+[node name="NE" type="RayCast3D" parent="Neighbors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+target_position = Vector3(0, -20, 0)
+
+[node name="SW" type="RayCast3D" parent="Neighbors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+target_position = Vector3(0, -20, 0)
+
+[node name="SE" type="RayCast3D" parent="Neighbors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+target_position = Vector3(0, -20, 0)
+
 [node name="Above" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 target_position = Vector3(0, 1, 0)

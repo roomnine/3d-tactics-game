@@ -80,7 +80,6 @@ func update_hovered_tile(ctrl: TacticsControls) -> void:
 ## Handles the selection of a new location for the current unit.
 func select_new_location(ctrl: TacticsControls) -> void:
 	var tile: Tile = input_service.get_3d_canvas_mouse_position(1, ctrl)
-	print(tile.is_hovered)
 	board.mark_hover_tile(tile)
 	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_reachable:
 		ctrl.curr_unit.res.pathfinding_tilestack = board.get_pathfinding_tilestack(tile)

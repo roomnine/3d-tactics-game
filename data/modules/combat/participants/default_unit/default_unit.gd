@@ -4,6 +4,10 @@ extends CharacterBody3D
 
 ## Resource containing control-related data and configurations
 @export var controls: ControlsResource = load("res://data/models/view/control/control.tres")
+## Resource containing initial stats for the actor
+@export var starting_stats: StatsResource
+## Array of initial skills for the actor
+@export var starting_skills: Array[String]
 
 ## Resource containing unit-specific data and configurations
 var res: DefaultUnitResource
@@ -11,9 +15,7 @@ var res: DefaultUnitResource
 var serv: DefaultUnitService
 
 ## Reference to the Stats node, handling unit statistics
-@onready var stats: Stats = $Expertise/Stats
-## TODO: The expertise (class or type) of the unit
-#@onready var expertise: String = $Expertise/Stats.expertise
+@onready var stats: Stats = $Stats
 ## Reference to the DefaultUnitSprite node, handling visual representation
 @onready var character: DefaultUnitSprite = $DefaultUnitSprite
 
@@ -22,9 +24,13 @@ var serv: DefaultUnitService
 func _ready() -> void:
 	res = DefaultUnitResource.new()
 	serv = DefaultUnitService.new()
+	if not starting_stats:
+		push_error("Status needs a StatsResource (Starting Stats) from /data/models/stats/") # Error if starting stats are not set
+	stats.import_stats(starting_stats) # Initialize stats from the starting_stats resource
+	print("Unit ", self.name, " loaded color from stats: ", stats.default_color)
 	#TODO: serv.setup(self)
 	controls.set_actions_menu_visibility(false, self)
-	#TODO: show_unit_stats(false)
+	show_unit_stats(false)
 
 
 ## Processes unit logic every physics frame
@@ -43,9 +49,12 @@ func center() -> bool:
 
 ## Gets the tile the unit is currently on
 ##
-## @return: The TacticsTile the unit is on
+## @return: The Tile the unit is on
 func get_tile() -> Tile:
-	return $Tile.get_collider()
+	var obj = $Tile.get_collider()
+	if obj and obj is Tile:
+		return obj
+	return null
 
 
 ## Checks if the unit is alive

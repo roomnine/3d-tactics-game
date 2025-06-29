@@ -65,13 +65,13 @@ func show_available_unit_actions() -> void:
 func show_available_movements() -> void:
 	board.reset_all_tile_markers()
 	
-	var p: DefaultUnit = res.curr_unit
-	if not p:
+	var unit: DefaultUnit = res.curr_unit
+	if not unit:
 		return
 	
-	camera.target = p
-	board.process_surrounding_tiles(p.get_tile(), int(p.stats.movement), p.get_parent().get_children())
-	board.mark_reachable_tiles(p.get_tile(), p.stats.movement)
+	camera.target = unit
+	board.process_surrounding_tiles(unit.get_tile(), int(unit.stats.movement), unit.get_parent().get_children())
+	board.mark_reachable_tiles(unit.get_tile(), unit.stats.movement)
 	res.stage = res.STAGE_SELECT_LOCATION
 
 
