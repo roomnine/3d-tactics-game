@@ -90,3 +90,20 @@ func can_unit_attack() -> bool:
 ## @param v: visibility yes or no
 func show_unit_stats(v: bool) -> void:
 	$DefaultUnitSprite/CharacterUI.visible = v
+
+
+## Initiates a basic attack on a target unit
+## 
+## @param target_unit: DefaultUnit to attack
+func basic_attack(target_unit: DefaultUnit) -> bool:
+	return serv.basic_attack(self, target_unit)
+
+
+## Resets the unit's turn state
+func reset_turn() -> void:
+	res.reset_turn()
+
+
+## Ends the unit's turn
+func end_unit_turn() -> void:
+	res.end_unit_turn()

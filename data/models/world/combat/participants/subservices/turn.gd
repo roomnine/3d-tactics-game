@@ -29,6 +29,8 @@ func _init(_res: ParticipantsResource, _camera: CameraResource, _controls: Contr
 ## @param player: The PlayerUnits node
 ## @param participant: The Participants node
 func handle_player_turn(delta: float, player: PlayerUnits, participant: Participants) -> void:
+	res.allies_on_map = participant.get_node("%PlayerUnits")
+	res.enemies_on_map = participant.get_node("%EnemyUnits")
 	if res.turn_just_started:
 		camera.target = player.get_children().front()
 		res.turn_just_started = false
@@ -44,7 +46,7 @@ func handle_player_turn(delta: float, player: PlayerUnits, participant: Particip
 		res.STAGE_MOVE_UNIT: player.move_unit()
 		res.STAGE_DISPLAY_TARGETS: player.display_attackable_targets()
 		res.STAGE_SELECT_ATTACK_TARGET: controls.select_unit_to_attack()
-		#TODO: res.STAGE_ATTACK: participant.serv.combat_service.attack_unit(delta, true)
+		res.STAGE_ATTACK: participant.serv.combat_service.basic_attack(true)
 
 
 ## Handles the enemy's turn
@@ -53,7 +55,8 @@ func handle_player_turn(delta: float, player: PlayerUnits, participant: Particip
 ## @param enemy: The EnemyUnits node
 ## @param participant: The Participants node
 func handle_enemy_turn(delta: float, enemy: EnemyUnits, participant: Participants) -> void:
-	res.targets = participant.get_node("%TacticsPlayer")
+	res.allies_on_map = participant.get_node("%EnemyUnits")
+	res.enemies_on_map = participant.get_node("%PlayerUnits")
 	controls.set_actions_menu_visibility(false, null)
 	if res.stage > 4:
 		res.stage = 0
@@ -63,7 +66,7 @@ func handle_enemy_turn(delta: float, enemy: EnemyUnits, participant: Participant
 		res.STAGE_SHOW_ACTIONS: enemy.chase_nearest_enemy()
 		res.STAGE_SHOW_MOVEMENTS: enemy.is_unit_done_moving()
 		res.STAGE_SELECT_LOCATION: enemy.choose_unit_to_attack()
-		#TODO: res.STAGE_MOVE_UNIT: participant.serv.combat_service.attack_unit(delta, false)
+		res.STAGE_MOVE_UNIT: participant.serv.combat_service.basic_attack(false)
 
 
 ## Checks if the participant can perform an action
@@ -82,8 +85,10 @@ func can_act(parent: Node3D) -> bool:
 ## @param parent: The parent node of the participant
 func reset_turn(parent: Node3D) -> void:
 	res.turn_just_started = true
-	for p: DefaultUnit in parent.get_children():
-		p.reset_turn()
+	res.allies_on_map = null
+	res.enemies_on_map = null
+	for unit: DefaultUnit in parent.get_children():
+		unit.reset_turn()
 
 
 ## Ends the participant's turn

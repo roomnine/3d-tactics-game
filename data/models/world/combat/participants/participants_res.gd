@@ -35,8 +35,10 @@ var curr_unit: DefaultUnit = null:
 		DebugLog.debug_nospam("unit", val)
 ## The unit that can be attacked
 var attackable_unit: DefaultUnit = null
-## The node containing the target units
-var targets: Node = null
+## The node containing allies on map
+var allies_on_map: Node = null
+## The node containing enemies on map
+var enemies_on_map: Node = null
 
 ## Flag to control the display of enemy stats
 var display_enemy_stats: bool = false

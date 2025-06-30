@@ -28,7 +28,7 @@ func choose_unit() -> void:
 
 ## Initiates the action of chasing the nearest enemy
 func chase_nearest_enemy() -> void:
-	enemy_serv.chase_nearest_enemy(self, get_node("../PlayerUnits")) # Delegate to the service
+	enemy_serv.chase_nearest_enemy() # Delegate to the service
 
 
 ## Checks if the opponent's unit has finished moving

@@ -70,11 +70,17 @@ func _select_hovered_tile(ctrl: TacticsControls) -> Tile:
 
 
 ## Updates the tile hovered by the mouse.
-func update_hovered_tile(ctrl: TacticsControls) -> void:
-	var tile: Tile = _select_hovered_tile(ctrl)
-	if tile != last_hovered_tile:
-		board.mark_hover_tile(tile)
-		last_hovered_tile = tile
+func update_hovered_tile(control: TacticsControls) -> void:
+	var _t: Tile = _select_hovered_tile(control)
+	if _t != last_hovered_tile:
+		board.mark_hover_tile(_t)
+		last_hovered_tile = _t
+
+
+## Updates the preview path from the hovered tile
+func update_path_preview(control: TacticsControls) -> void:
+	var _t: Tile = _select_hovered_tile(control)
+	board.mark_path_preview(_t)
 
 
 ## Handles the selection of a new location for the current unit.
@@ -117,8 +123,8 @@ func player_wants_to_cancel() -> void:
 	participant.stage = 1 if participant.stage > 1 else 0
 
 
-## Handles the player's intention to wait.
-func player_wants_to_wait() -> void:
+## Handles the player's intention to use skill.
+func player_wants_to_use_skill() -> void:
 	if participant.display_enemy_stats:
 		participant.display_enemy_stats = false
 	participant.curr_unit.end_unit_turn()

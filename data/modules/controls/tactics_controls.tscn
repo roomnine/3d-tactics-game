@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://lwa1opk88yxc"]
+[gd_scene load_steps=4 format=3 uid="uid://lwa1opk88yxc"]
 
 [ext_resource type="Script" uid="uid://4nn8p88x82av" path="res://data/modules/controls/tactics_controls.gd" id="1_oobjx"]
 [ext_resource type="PackedScene" uid="uid://d0rciydb7u8t3" path="res://data/modules/ui/input_capture.tscn" id="2_jotyk"]
+[ext_resource type="Texture2D" uid="uid://b04k5osa5inkf" path="res://assets/icon.svg" id="3_sy0a8"]
 
 [node name="TacticsControls" type="Control"]
 layout_mode = 3
@@ -14,38 +15,75 @@ script = ExtResource("1_oobjx")
 
 [node name="InputCapture" parent="." instance=ExtResource("2_jotyk")]
 
-[node name="Actions" type="HBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="ControlArea" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -95.0
+offset_top = -108.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 20
 
-[node name="Move" type="Button" parent="Actions"]
+[node name="Portrait" type="AspectRatioContainer" parent="ControlArea"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnitSprite" type="TextureRect" parent="ControlArea/Portrait"]
+layout_mode = 2
+texture = ExtResource("3_sy0a8")
+
+[node name="Info" type="VBoxContainer" parent="ControlArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="NameLabel" type="Label" parent="ControlArea/Info"]
+layout_mode = 2
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 40
+text = "UnitName"
+
+[node name="HSeparator" type="HSeparator" parent="ControlArea/Info"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="DeviantEnergyLabel" type="Label" parent="ControlArea/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme_override_font_sizes/font_size = 30
+text = "Deviant Energy: 3/3"
+
+[node name="Actions" type="HBoxContainer" parent="ControlArea"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Move" type="Button" parent="ControlArea/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Move"
 
-[node name="Attack" type="Button" parent="Actions"]
+[node name="Attack" type="Button" parent="ControlArea/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Attack"
 
-[node name="Skill" type="Button" parent="Actions"]
+[node name="Skill" type="Button" parent="ControlArea/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Skill	"
 
-[node name="Cancel" type="Button" parent="Actions"]
+[node name="Cancel" type="Button" parent="ControlArea/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="EndTurn" type="Button" parent="Actions"]
+[node name="EndTurn" type="Button" parent="ControlArea/Actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "End Turn"

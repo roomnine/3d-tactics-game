@@ -16,6 +16,8 @@ var is_reachable: bool = false
 var is_attackable: bool = false
 ## Whether the tile is being hovered over
 var is_hovered: bool = false
+## Whether the tile is used in the path when hovering over a target while selecting movement
+var is_path_preview: bool = false
 
 ## Pathfinding starting point.[br]Used by [TacticsBoard]
 var pf_root: Tile
@@ -44,16 +46,19 @@ func _process(delta: float) -> void:
 		return
 	
 	# Set visibility of the tile to visible if attackable, reachable, or hover are true.
-	tile.visible = is_attackable or is_reachable or is_hovered # Set visibility based on tile state
+	tile.visible = is_attackable or is_reachable or is_hovered or is_path_preview # Set visibility based on tile state
 	
 	match is_hovered:
 		true: # If hover is true, decide which material to use based on the tile's state
 			tile.material_override = hover_mat
 		false: # If hover is false, this block decides between two materials
-			if is_reachable:
-				tile.material_override = hover_reachable_mat
-			elif is_attackable:
-				tile.material_override = hover_attackable_mat
+			if is_path_preview:
+				tile.material_override = hover_mat
+			else:
+				if is_reachable:
+					tile.material_override = hover_reachable_mat
+				elif is_attackable:
+					tile.material_override = hover_attackable_mat
 #endregion
 
 #region: --- Methods ---
@@ -77,6 +82,7 @@ func reset_markers() -> void:
 	pf_distance = 0
 	is_reachable = false
 	is_attackable = false
+	is_path_preview = false
 
 ## Initializes tile (disable hover, instantiate raycast & reset state)
 func configure_tile() -> void:

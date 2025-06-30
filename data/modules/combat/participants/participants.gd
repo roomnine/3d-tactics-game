@@ -27,8 +27,8 @@ func _ready() -> void:
 	serv = ParticipantsService.new(res, camera, controls)
 	# Set up the service with this node as context
 	serv.setup(self)
-	# TODO: Connect the end_turn signal to the end_turn method
-	#res.connect("called_end_turn", end_turn)
+	# Connect the end_turn signal to the end_turn method
+	res.connect("called_end_turn", end_turn)
 
 
 ## Performs the participant's action
@@ -71,6 +71,6 @@ func reset_turn(parent: Node3D) -> void:
 	serv.reset_turn(parent)
 
 
-## TODO: Ends the participant's turn
-#func end_turn() -> void:
-	#serv.end_turn(player)
+## Ends the participant's turn
+func end_turn() -> void:
+	serv.end_turn(player)

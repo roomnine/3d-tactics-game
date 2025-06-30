@@ -48,17 +48,17 @@ func choose_unit(enemy: EnemyUnits) -> void:
 			return
 
 
-## Initiates the enemy's unit to chase the nearest enemy
+## Initiates the player's unit to chase the nearest enemy
 ##
-## @param enemy: The EnemyUnits node
+## @param player: The PlayerUnits node
 ## @param player_node: The player's node
-func chase_nearest_enemy(enemy: EnemyUnits, player_node: Node) -> void:
+func chase_nearest_enemy() -> void:
 	if res.curr_unit.res.can_move:
 		board.reset_all_tile_markers()
-		board.process_surrounding_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.movement, enemy.get_children())
+		board.process_surrounding_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.movement, res.allies_on_map.get_children(), res.enemies_on_map.get_children())
 		board.mark_reachable_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.movement)
 		
-		var to: Tile = board.get_nearest_target_adjacent_tile(res.curr_unit, player_node.get_children())
+		var to: Tile = board.get_nearest_target_adjacent_tile(res.curr_unit, res.enemies_on_map.get_children())
 		res.curr_unit.res.pathfinding_tilestack = board.get_pathfinding_tilestack(to)
 		camera.target = to
 		if DebugLog.debug_enabled:
@@ -82,10 +82,10 @@ func is_unit_done_moving() -> void:
 ## Selects a unit for the enemy to attack
 func choose_unit_to_attack() -> void:
 	board.reset_all_tile_markers()
-	board.process_surrounding_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range)
+	board.process_surrounding_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range, res.allies_on_map.get_children(), res.enemies_on_map.get_children())
 	board.mark_attackable_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range)
 	
-	res.attackable_unit = board.get_weakest_attackable_unit(res.targets.get_children())
+	res.attackable_unit = board.get_weakest_attackable_unit(res.enemies_on_map.get_children())
 	if res.attackable_unit:
 		if DebugLog.debug_enabled:
 			print_rich("[color=orange]Weakest target detected:", res.attackable_unit, "[/color]")

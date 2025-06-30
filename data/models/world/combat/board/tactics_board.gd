@@ -32,8 +32,8 @@ func configure_tiles() -> void:
 ## [param root_tile] The central tile to process around
 ## [param height] The height to consider for processing
 ## [param allies_on_map] Array of allied units on the map (optional)
-func process_surrounding_tiles(root_tile: Tile, height: float, allies_on_map: Array = []) -> void:
-	serv.process_surrounding_tiles(root_tile, height, allies_on_map)
+func process_surrounding_tiles(root_tile: Tile, height: float, allies_on_map: Array, enemies_on_map: Array) -> void:
+	serv.process_surrounding_tiles(root_tile, height, allies_on_map, enemies_on_map)
 
 
 ## Returns an array of tiles representing the pathfinding stack to a given tile
@@ -62,6 +62,12 @@ func get_weakest_attackable_unit(unit_arr: Array) -> DefaultUnit:
 ## [param tile] The tile to mark as hovered
 func mark_hover_tile(tile: Tile) -> void:
 	serv.mark_hover_tile(self, tile)
+
+
+## Marks a tile as being part of a path
+## [param tile] The tile to mark as being part of a path
+func mark_path_preview(tile: Tile) -> void:
+	serv.mark_path_preview(self, tile)
 
 
 ## Marks tiles reachable within a certain distance from a root tile

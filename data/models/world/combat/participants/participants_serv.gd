@@ -12,8 +12,8 @@ var camera: CameraResource
 var controls: ControlsResource
 ## Service handling turn-related logic
 var turn_service: ParticipantsTurnService
-## TODO: Service handling combat-related logic
-#var combat_service: ParticipantCombatService
+## Service handling combat-related logic
+var combat_service: ParticipantsCombatService
 
 
 ## Initializes the ParticipantsService
@@ -26,7 +26,7 @@ func _init(_res: ParticipantsResource, _camera: CameraResource, _controls: Contr
 	camera = _camera
 	controls = _controls
 	turn_service = ParticipantsTurnService.new(res, camera, controls)
-	#TODO: combat_service = ParticipantCombatService.new(res, camera, controls)
+	combat_service = ParticipantsCombatService.new(res, camera, controls)
 
 
 ## Sets up the ParticipantsService
@@ -91,8 +91,8 @@ func reset_turn(parent: Node3D) -> void:
 	turn_service.reset_turn(parent)
 
 
-## TODO: Ends the participant's turn
+## Ends the participant's turn
 ##
 ## @param player: The PlayerUnits node
-#func end_turn(player: PlayerUnits) -> void:
-	#turn_service.end_turn(player)
+func end_turn(player: PlayerUnits) -> void:
+	turn_service.end_turn(player)

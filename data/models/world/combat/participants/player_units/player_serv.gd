@@ -70,7 +70,7 @@ func show_available_movements() -> void:
 		return
 	
 	camera.target = unit
-	board.process_surrounding_tiles(unit.get_tile(), int(unit.stats.movement), unit.get_parent().get_children())
+	board.process_surrounding_tiles(unit.get_tile(), int(unit.stats.movement), res.allies_on_map.get_children(), res.enemies_on_map.get_children())
 	board.mark_reachable_tiles(unit.get_tile(), unit.stats.movement)
 	res.stage = res.STAGE_SELECT_LOCATION
 
@@ -85,7 +85,7 @@ func display_attackable_targets() -> void:
 	res.display_enemy_stats = true
 	
 	camera.target = p
-	board.process_surrounding_tiles(p.get_tile(), float(p.stats.attack_range))
+	board.process_surrounding_tiles(p.get_tile(), float(p.stats.attack_range), res.allies_on_map.get_children(), res.enemies_on_map.get_children())
 	board.mark_attackable_tiles(p.get_tile(), float(p.stats.attack_range))
 	res.stage = res.STAGE_SELECT_ATTACK_TARGET
 

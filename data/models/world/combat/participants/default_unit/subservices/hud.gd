@@ -6,7 +6,9 @@ extends RefCounted
 ##
 ## @param unit: DefaultUnit to display health above
 func update_unit_health(unit: DefaultUnit) -> void:
-	pass
+	var _health_label: Label3D = unit.get_node("DefaultUnitSprite/CharacterUI/HealthLabel")
+	_health_label.text = str(unit.stats.curr_health) + "/" + str(unit.stats.max_health)
+
 
 ## Apply sprite tint when unable to act
 ##
