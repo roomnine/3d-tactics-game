@@ -44,3 +44,14 @@ func process(unit: DefaultUnit, delta: float) -> void:
 ## @return: Whether the attack was successful
 func basic_attack(unit: DefaultUnit, target_unit: DefaultUnit) -> bool:
 	return combat.basic_attack(unit, target_unit)
+
+
+## Initiates a skill on a target unit
+##
+## @param unit: The unit using the skill
+## @param skill: The skill resource to use
+## @param targetable_units: The units being targeted if exists
+## @param targetable_tiles: The tiles being targeted if exists
+## @return: Whether the skill was successfully used
+func use_skill(unit: DefaultUnit, skill: SkillResource, targetable_units: Array[DefaultUnit] = [], targetable_tiles: Array[Tile] = []) -> bool:
+	return combat.use_skill(unit, skill, targetable_units, targetable_tiles)

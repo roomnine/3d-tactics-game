@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsmkgvbxej6t5"]
 
-[ext_resource type="MeshLibrary" uid="uid://b80yyidp2xmla" path="res://assets/maps/terrain/terrain.tres" id="1_dlp17"]
+[ext_resource type="MeshLibrary" uid="uid://b80yyidp2xmla" path="res://assets/maps/terrain/mesh_libraries/test_library/terrain.tres" id="1_ij8dj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlp17"]
 
 [node name="TestTerrain" type="GridMap"]
-mesh_library = ExtResource("1_dlp17")
+mesh_library = ExtResource("1_ij8dj")
 physics_material = SubResource("PhysicsMaterial_dlp17")
 cell_size = Vector3(1, 1, 1)
 data = {

@@ -68,15 +68,18 @@ func process_surrounding_tiles(root_tile: Tile, height: float, allies_on_map: Ar
 			if _neighbor.pf_root != null or _neighbor == root_tile:
 				continue
 
-			# If occupied, mark it but do not enqueue neighbors
+			# Compute vertical movement cost
+			var vertical_cost = max(0, _neighbor.global_position.y - _curr_tile.global_position.y)
+
+			# If occupied, mark but don't propagate
 			if _neighbor.is_tile_occupied():
 				_neighbor.pf_root = _curr_tile
-				_neighbor.pf_distance = _curr_tile.pf_distance + 1
+				_neighbor.pf_distance = _curr_tile.pf_distance + 1 + vertical_cost
 				continue
 
-			# If not occupied, proceed normally
+			# Normal propagation
 			_neighbor.pf_root = _curr_tile
-			_neighbor.pf_distance = _curr_tile.pf_distance + 1
+			_neighbor.pf_distance = _curr_tile.pf_distance + 1 + vertical_cost
 			_tiles_process_q.push_back(_neighbor)
 
 ## Get the pathfinding tilestack to a target tile
@@ -117,19 +120,20 @@ func get_nearest_target_adjacent_tile(unit: DefaultUnit, target_units: Array) ->
 		DebugLog.debug_nospam("nearest_target", unit)
 		return unit.get_tile()
 
-## Get the weakest attackable unit from an array of units
+## Get the weakest targetable unit from an array of units
 ## [param unit_arr] Array of units to evaluate
-## [returns] The weakest attackable unit or null if none found
+## [returns] The weakest targetable unit or null if none found
 
-func get_weakest_attackable_unit(unit_arr: Array) -> DefaultUnit:
+func get_weakest_targetable_unit(unit_arr: Array) -> DefaultUnit:
 	var _weakest: DefaultUnit = null
 	
-	for _p: DefaultUnit in unit_arr:
-		if not _weakest or _p.stats.curr_health < _weakest.stats.curr_health:
-			if _p.stats.curr_health > 0 and _p.get_tile().is_attackable:
-				_weakest = _p
+	for _unit: DefaultUnit in unit_arr:
+		if not _weakest or _unit.stats.curr_health < _weakest.stats.curr_health:
+			if _unit.stats.curr_health > 0 and _unit.get_tile().is_targetable:
+				_weakest = _unit
 	
 	return _weakest
+
 
 ## Mark a tile as hovered and unmark others
 ## [param board] The TacticsBoard containing the tiles
@@ -140,6 +144,7 @@ func mark_hover_tile(board: TacticsBoard, tile: Tile) -> void:
 	
 	if tile:
 		tile.is_hovered = true
+
 
 ## Mark reachable tiles within a certain distance from a root tile
 ## [param board] The TacticsBoard containing the tiles
@@ -175,17 +180,30 @@ func mark_path_preview(board: TacticsBoard, target_tile: Tile) -> void:
 		current = current.pf_root
 
 
-## Mark attackable tiles within a certain distance from a root tile
+##TODO: Marks preview of tiles being targeted
 ## [param board] The TacticsBoard containing the tiles
 ## [param root] The starting tile
 ## [param distance] The maximum attack distance
-func mark_attackable_tiles(board: TacticsBoard, root: Tile, distance: float) -> void:
+func mark_target_preview_tiles(board: TacticsBoard, root: Tile, distance: float) -> void:
 	for _t: Tile in board.get_node("Tiles").get_children():
 		var _has_dist: bool = _t.pf_distance > 0
 		var _is_reachable: bool = _t.pf_distance <= distance
 		var _is_root: bool = _t == root
 		
-		_t.is_attackable = _has_dist and _is_reachable or _is_root
+		_t.is_target_preview = _has_dist and _is_reachable or _is_root
+
+
+## Mark targetable tiles within a certain distance from a root tile
+## [param board] The TacticsBoard containing the tiles
+## [param root] The starting tile
+## [param distance] The maximum attack distance
+func mark_targetable_tiles(board: TacticsBoard, root: Tile, distance: float) -> void:
+	for _t: Tile in board.get_node("Tiles").get_children():
+		var _has_dist: bool = _t.pf_distance > 0
+		var _is_reachable: bool = _t.pf_distance <= distance
+		var _is_root: bool = _t == root
+		
+		_t.is_targetable = _has_dist and _is_reachable or _is_root
 
 
 ## Checks if a tile is adjacent to any enemy unit

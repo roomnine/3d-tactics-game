@@ -96,18 +96,74 @@ func select_new_location(ctrl: TacticsControls) -> void:
 ## Handles the selection of a unit to attack.
 func select_unit_to_attack(ctrl: TacticsControls) -> void:
 	controls.set_actions_menu_visibility(true, participant.curr_unit)
-	if participant.attackable_unit:
-		controls.set_actions_menu_visibility(false, participant.attackable_unit)
-		participant.attackable_unit.show_unit_stats(false)
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(false, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(false)
 	var tile: Tile = _select_hovered_tile(ctrl)
-	participant.attackable_unit = tile.get_tile_occupier() if tile else null
-	if participant.attackable_unit:
-		controls.set_actions_menu_visibility(true, participant.attackable_unit)
-		participant.attackable_unit.show_unit_stats(true)
-	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_attackable:
-		t_cam.target = participant.attackable_unit
+	participant.targetable_unit = tile.get_tile_occupier() if tile else null
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(true, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(true)
+	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_targetable:
+		t_cam.target = participant.targetable_unit
 		participant.stage = 7
 
+
+## Handles skill usage for a non-targeting skill. Highlights the cells within range of the skill.
+func confirm_skill_usage(ctrl: TacticsControls) -> void:
+	controls.set_actions_menu_visibility(true, participant.curr_unit)
+	if not participant.selected_skill:
+		push_warning("No skill selected!")
+		return
+	var skill = participant.selected_skill
+	var unit = participant.curr_unit
+	if not unit:
+		push_warning("No current unit selected!")
+		return
+	# Clear old markers and highlight tiles in skill range
+	board.reset_all_tile_markers()
+	var tiles_in_range = unit.get_tile().get_tiles_in_radius(skill.area_radius)
+	for t in tiles_in_range:
+		t.is_targetable = true
+	# If a tile within the area is selected, move to stage 11 and reset
+	var tile: Tile = _select_hovered_tile(ctrl)
+	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_targetable:
+		t_cam.target = participant.targetable_unit
+		participant.stage = 11
+
+
+##TODO: Handles the selection of a unit to use skill on. 
+## Sets participant.targetable_unit so that it can be referenced to execute the effect in ParticipantsCombatService
+func select_unit_to_use_skill_on(ctrl: TacticsControls) -> void:
+	controls.set_actions_menu_visibility(true, participant.curr_unit)
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(false, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(false)
+	var tile: Tile = _select_hovered_tile(ctrl)
+	participant.targetable_unit = tile.get_tile_occupier() if tile else null
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(true, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(true)
+	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_targetable:
+		t_cam.target = participant.targetable_unit
+		participant.stage = 11
+
+
+##TODO: Handles the selection of a tile to use skill on. 
+## Sets participant.targetable_tile so that it can be referenced to execute the effect in ParticipantsCombatService
+func select_tile_to_use_skill_on(ctrl: TacticsControls) -> void:
+	controls.set_actions_menu_visibility(true, participant.curr_unit)
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(false, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(false)
+	var tile: Tile = _select_hovered_tile(ctrl)
+	participant.targetable_unit = tile.get_tile_occupier() if tile else null
+	if participant.targetable_unit:
+		controls.set_actions_menu_visibility(true, participant.targetable_unit)
+		participant.targetable_unit.show_unit_stats(true)
+	if Input.is_action_just_pressed("ui_accept") and tile and tile.is_targetable:
+		t_cam.target = participant.targetable_unit
+		participant.stage = 11
 
 ## Handles the player's intention to move.
 func player_wants_to_move() -> void:
@@ -124,11 +180,16 @@ func player_wants_to_cancel() -> void:
 
 
 ## Handles the player's intention to use skill.
-func player_wants_to_use_skill() -> void:
-	if participant.display_enemy_stats:
-		participant.display_enemy_stats = false
-	participant.curr_unit.end_unit_turn()
-	participant.stage = 0
+func player_wants_to_use_skill(skill: SkillResource) -> void:
+	participant.selected_skill = skill
+	print("Skill selected:", skill.name)
+	match skill.skill_type:
+		SkillResource.SkillType.NO_TARGET:
+			participant.stage = 8
+		SkillResource.SkillType.TARGET_UNIT:
+			participant.stage = 9
+		SkillResource.SkillType.TARGET_TILE:
+			participant.stage = 10
 
 
 ## Handles the player's intention to end turn.

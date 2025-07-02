@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch0m02djawl2e"]
 
-[ext_resource type="PackedScene" uid="uid://b353uk210ub1h" path="res://assets/maps/test_level/test_level.tscn" id="1_bfwe6"]
+[ext_resource type="PackedScene" uid="uid://b353uk210ub1h" path="res://assets/maps/level/test_level.tscn" id="1_bfwe6"]
 [ext_resource type="PackedScene" uid="uid://lwa1opk88yxc" path="res://data/modules/controls/tactics_controls.tscn" id="1_s0khs"]
 [ext_resource type="PackedScene" uid="uid://cje7pc3mhl05q" path="res://data/modules/camera/tactics_camera.tscn" id="1_vbr7t"]
 

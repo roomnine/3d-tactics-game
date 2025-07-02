@@ -75,8 +75,8 @@ func show_available_movements() -> void:
 	res.stage = res.STAGE_SELECT_LOCATION
 
 
-## Displays attackable targets for the current unit
-func display_attackable_targets() -> void:
+## Displays targetable targets for the current unit
+func display_targetable_targets() -> void:
 	board.reset_all_tile_markers()
 	var p: DefaultUnit = res.curr_unit
 	if not p:
@@ -86,7 +86,7 @@ func display_attackable_targets() -> void:
 	
 	camera.target = p
 	board.process_surrounding_tiles(p.get_tile(), float(p.stats.attack_range), res.allies_on_map.get_children(), res.enemies_on_map.get_children())
-	board.mark_attackable_tiles(p.get_tile(), float(p.stats.attack_range))
+	board.mark_targetable_tiles(p.get_tile(), float(p.stats.attack_range))
 	res.stage = res.STAGE_SELECT_ATTACK_TARGET
 
 

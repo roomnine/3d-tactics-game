@@ -25,8 +25,8 @@ func _init(_res: CameraResource, _controls: ControlsResource) -> void:
 
 ## Set up initial camera properties
 func setup(camera: TacticsCamera, cam_node: Camera3D) -> void:
-	res.x_rot = -30
-	res.y_rot = -45
+	res.x_rot = -35
+	res.y_rot = 270
 	if not controls:
 		push_error("TacticsControls needs a ControlResource from /data/models/view/control/tactics/")
 	if not res:

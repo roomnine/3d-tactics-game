@@ -83,14 +83,14 @@ func is_unit_done_moving() -> void:
 func choose_unit_to_attack() -> void:
 	board.reset_all_tile_markers()
 	board.process_surrounding_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range, res.allies_on_map.get_children(), res.enemies_on_map.get_children())
-	board.mark_attackable_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range)
+	board.mark_targetable_tiles(res.curr_unit.get_tile(), res.curr_unit.stats.attack_range)
 	
-	res.attackable_unit = board.get_weakest_attackable_unit(res.enemies_on_map.get_children())
-	if res.attackable_unit:
+	res.targetable_unit = board.get_weakest_targetable_unit(res.enemies_on_map.get_children())
+	if res.targetable_unit:
 		if DebugLog.debug_enabled:
-			print_rich("[color=orange]Weakest target detected:", res.attackable_unit, "[/color]")
-		controls.set_actions_menu_visibility(true, res.attackable_unit)
-		camera.target = res.attackable_unit
+			print_rich("[color=orange]Weakest target detected:", res.targetable_unit, "[/color]")
+		controls.set_actions_menu_visibility(true, res.targetable_unit)
+		camera.target = res.targetable_unit
 	else:
 		if DebugLog.debug_enabled:
 			print_rich("[color=orange]No target detected.[/color]")

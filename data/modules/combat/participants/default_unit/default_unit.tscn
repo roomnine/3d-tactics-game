@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4r3dhhhqgkcr"]
+[gd_scene load_steps=8 format=3 uid="uid://b4r3dhhhqgkcr"]
 
 [ext_resource type="Script" uid="uid://8yviu36nudpc" path="res://data/modules/combat/participants/default_unit/default_unit.gd" id="1_mfk8d"]
 [ext_resource type="Script" uid="uid://wtc8ax8pvtqa" path="res://data/modules/combat/participants/default_unit/default_unit_sprite.gd" id="2_shglf"]
 [ext_resource type="Script" uid="uid://ckio3txli6fer" path="res://data/modules/status/stats.gd" id="3_3otks"]
+[ext_resource type="Script" uid="uid://dyrqa2cja3abm" path="res://data/modules/status/skills.gd" id="4_ik4ro"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_of4nk"]
 
@@ -49,3 +50,6 @@ outline_size = 0
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("3_3otks")
+
+[node name="Skills" type="Node" parent="."]
+script = ExtResource("4_ik4ro")

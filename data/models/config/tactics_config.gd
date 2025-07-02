@@ -20,8 +20,8 @@ static var mat_color: Dictionary = {
 	"hover": create_material(str(color.white)),
 	"reachable": create_material(str(color.blue_cola)),
 	"reachable_hover": create_material(str(color.blue_bolt)),
-	"attackable": create_material(str(color.rosso_corsa)),
-	"hover_attackable": create_material(str(color.coral_red)),
+	"targetable": create_material(str(color.rosso_corsa)),
+	"hover_targetable": create_material(str(color.coral_red)),
 }
 
 ## Dictionary of unit-related configuration values.
@@ -40,7 +40,7 @@ static var view: Dictionary = {
 
 ## Array of UI element names used to filter out UI elements when parsing the mouse cursor position.
 static var ui_elem: Array[String] = [
-	"%Actions", "%Hints",
+	"%ActionArea", "%Hints",
 ]
 #endregion
 

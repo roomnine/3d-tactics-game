@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://byt5rrj6scayv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nc0yb"]
+albedo_color = Color(0.344185, 0.678829, 0.868785, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hngf1"]
+material = SubResource("StandardMaterial3D_nc0yb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nc0yb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uun6"]
+albedo_color = Color(1, 1, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2s5k"]
+material = SubResource("StandardMaterial3D_5uun6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hngf1"]
+albedo_color = Color(0.161266, 0.145885, 0.118503, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cyowi"]
+material = SubResource("StandardMaterial3D_hngf1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdtlp"]
+albedo_color = Color(1, 0.160784, 0.141176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5uun6"]
+material = SubResource("StandardMaterial3D_pdtlp")
+
+[node name="Terrain" type="Node3D"]
+
+[node name="DefaultTerrain" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hngf1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DefaultTerrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DefaultTerrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_nc0yb")
+
+[node name="VictoryTerrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("BoxMesh_e2s5k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VictoryTerrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VictoryTerrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_nc0yb")
+
+[node name="ImpassableTerrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_cyowi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ImpassableTerrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ImpassableTerrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_nc0yb")
+
+[node name="AcidTerrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = SubResource("BoxMesh_5uun6")
+skeleton = NodePath("../ImpassableTerrain")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="AcidTerrain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AcidTerrain/StaticBody3D"]
+shape = SubResource("BoxShape3D_nc0yb")

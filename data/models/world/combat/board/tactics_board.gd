@@ -51,11 +51,11 @@ func get_nearest_target_adjacent_tile(unit: DefaultUnit, target_units: Array) ->
 	return serv.get_nearest_target_adjacent_tile(unit, target_units)
 
 
-## Identifies the weakest attackable unit from an array of units
+## Identifies the weakest targetable unit from an array of units
 ## [param unit_arr] Array of units to evaluate
-## [returns] The weakest attackable unit
-func get_weakest_attackable_unit(unit_arr: Array) -> DefaultUnit:
-	return serv.get_weakest_attackable_unit(unit_arr)
+## [returns] The weakest targetable unit
+func get_weakest_targetable_unit(unit_arr: Array) -> DefaultUnit:
+	return serv.get_weakest_targetable_unit(unit_arr)
 
 
 ## Marks a tile as hovered
@@ -77,8 +77,15 @@ func mark_reachable_tiles(root: Tile, distance: float) -> void:
 	serv.mark_reachable_tiles(self, root, distance)
 
 
-## Marks tiles attackable within a certain distance from a root tile
+## Marks tiles targetable within a certain distance from a root tile
 ## [param root] The starting tile
 ## [param distance] The maximum attack distance
-func mark_attackable_tiles(root: Tile, distance: float) -> void:
-	serv.mark_attackable_tiles(self, root, distance)
+func mark_targetable_tiles(root: Tile, distance: float) -> void:
+	serv.mark_targetable_tiles(self, root, distance)
+
+
+## TODO: Marks tiles being targeted by a skill within a certain distance from a root tile
+## [param root] The starting tile
+## [param distance] The maximum attack distance
+func mark_target_preview_tiles(root: Tile, distance: float) -> void:
+	serv.mark_target_preview_tiles(self, root, distance)

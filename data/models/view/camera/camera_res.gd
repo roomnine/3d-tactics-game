@@ -42,9 +42,9 @@ static var zoom_speed: float
 ## Duration of zoom transition
 @export_range(0.01, 1) var zoom_duration: float = 0.5
 ## Minimum zoom level (closest)
-@export_range(0.1, 50) var min_zoom: float = 1.0
+@export_range(0.1, 50) var min_zoom: float = 20.0
 ## Maximum zoom level (farthest)
-@export_range(10.0, 100.0) var max_zoom: float = 20.0
+@export_range(10.0, 100.0) var max_zoom: float = 50.0
 ## Current Field of View
 var current_fov: float = 50.0
 ## Target Field of View for smooth transition

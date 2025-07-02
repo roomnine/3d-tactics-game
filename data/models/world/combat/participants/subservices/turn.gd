@@ -44,9 +44,13 @@ func handle_player_turn(delta: float, player: PlayerUnits, participant: Particip
 		res.STAGE_SHOW_MOVEMENTS: player.show_available_movements()
 		res.STAGE_SELECT_LOCATION: controls.select_new_location()
 		res.STAGE_MOVE_UNIT: player.move_unit()
-		res.STAGE_DISPLAY_TARGETS: player.display_attackable_targets()
+		res.STAGE_DISPLAY_TARGETS: player.display_targetable_targets()
 		res.STAGE_SELECT_ATTACK_TARGET: controls.select_unit_to_attack()
 		res.STAGE_ATTACK: participant.serv.combat_service.basic_attack(true)
+		res.STAGE_SELECT_SKILL_NO_TARGET: controls.confirm_skill_usage()
+		res.STAGE_SELECT_SKILL_TARGET_UNIT: controls.select_unit_to_use_skill_on()
+		res.STAGE_SELECT_SKILL_TARGET_TILE: controls.select_tile_to_use_skill_on()
+		res.STAGE_SKILL: participant.serv.combat_service.use_skill(true)
 
 
 ## Handles the enemy's turn

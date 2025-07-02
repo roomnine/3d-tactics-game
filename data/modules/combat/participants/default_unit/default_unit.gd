@@ -16,18 +16,19 @@ var serv: DefaultUnitService
 
 ## Reference to the Stats node, handling unit statistics
 @onready var stats: Stats = $Stats
+## Reference to the Skills node, handling unit skills
+@onready var skills: Skills = $Skills
 ## Reference to the DefaultUnitSprite node, handling visual representation
 @onready var character: DefaultUnitSprite = $DefaultUnitSprite
 
 
 ## Initializes the DefaultUnit node
 func _ready() -> void:
+	print("[DefaultUnit] starting_skills:", starting_skills)
 	res = DefaultUnitResource.new()
 	serv = DefaultUnitService.new()
-	if not starting_stats:
-		push_error("Status needs a StatsResource (Starting Stats) from /data/models/stats/") # Error if starting stats are not set
 	stats.import_stats(starting_stats) # Initialize stats from the starting_stats resource
-	print("Unit ", self.name, " loaded color from stats: ", stats.default_color)
+	skills.import_skills(starting_skills) # Initialize skills from the starting_stats array
 	#TODO: serv.setup(self)
 	controls.set_actions_menu_visibility(false, self)
 	show_unit_stats(false)
@@ -97,6 +98,16 @@ func show_unit_stats(v: bool) -> void:
 ## @param target_unit: DefaultUnit to attack
 func basic_attack(target_unit: DefaultUnit) -> bool:
 	return serv.basic_attack(self, target_unit)
+
+
+## Initiates using a skill
+##
+## @param skill: The skill resource to use
+## @param targetable_units: The units being targeted if exists
+## @param targetable_tiles: The tiles being targeted if exists
+## @return: Whether the skill was successfully used
+func use_skill(unit: DefaultUnit, skill: SkillResource, targetable_units: Array[DefaultUnit] = [], targetable_tiles: Array[Tile] = []):
+	return serv.use_skill(self, skill, targetable_units, targetable_tiles)
 
 
 ## Resets the unit's turn state
