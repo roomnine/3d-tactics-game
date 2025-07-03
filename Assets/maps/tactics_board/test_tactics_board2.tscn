@@ -596,10 +596,6 @@ mesh = SubResource("PlaneMesh_56xk0")
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 2.01, 1)
 mesh = SubResource("PlaneMesh_56xk0")
 
-[node name="Tile304" type="MeshInstance3D" parent="Tiles"]
-transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 1)
-mesh = SubResource("PlaneMesh_56xk0")
-
 [node name="Tile143" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 1.01, -2)
 mesh = SubResource("PlaneMesh_56xk0")
@@ -1112,6 +1108,10 @@ mesh = SubResource("PlaneMesh_56xk0")
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -4, 0.00999999, 8)
 mesh = SubResource("PlaneMesh_56xk0")
 
+[node name="Tile304" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
 [node name="Tile215" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -4, 0.00999999, 9)
 mesh = SubResource("PlaneMesh_56xk0")
@@ -1234,6 +1234,390 @@ mesh = SubResource("PlaneMesh_56xk0")
 
 [node name="Tile150" type="MeshInstance3D" parent="Tiles"]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.00999999, 9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile305" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 2, 2.01, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile306" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 3, 2.01, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile307" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 4, 2.01, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile308" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 5, 2.01, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile310" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -6, 2.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile311" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -5, 2.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile312" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -4, 2.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile313" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -3, 2.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile309" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 6, 1.01, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile314" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 2.01, -5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile315" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 2.01, -2)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile323" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -7, 1.01, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile316" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 2.01, -4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile317" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 2.01, -3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile318" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile319" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile320" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile321" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 2.01, 5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile322" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 1.01, -6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile324" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 1.01, 7)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile325" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 8, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile326" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 7, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile327" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 6, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile328" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 5, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile329" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 4, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile330" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 3, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile331" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 2, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile332" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 1, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile333" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -2, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile334" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -3, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile335" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -4, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile336" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -5, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile337" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -6, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile338" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -7, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile339" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -8, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile340" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -9, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile341" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile342" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile343" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 8, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile361" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -8)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile362" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -7)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile363" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile364" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile365" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile366" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile367" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -2)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile368" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile369" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile370" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile371" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 2)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile372" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile373" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile374" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile375" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile376" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 7)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile377" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 8)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile378" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile379" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile380" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 9, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile381" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -8)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile382" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -7)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile383" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile384" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile385" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile386" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile387" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -2)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile388" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile389" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 0)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile390" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 1)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile391" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 2)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile392" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 3)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile393" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 4)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile394" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 5)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile395" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 6)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile396" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 7)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile397" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 8)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile398" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile399" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, 10)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile400" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -10, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile344" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 7, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile345" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 6, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile346" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 5, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile347" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 4, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile348" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 3, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile349" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 2, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile350" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 1, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile351" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -2, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile352" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -3, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile353" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -4, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile354" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -5, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile355" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -6, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile356" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -7, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile357" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -8, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile358" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -9, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile359" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -1, 0.00999999, -9)
+mesh = SubResource("PlaneMesh_56xk0")
+
+[node name="Tile360" type="MeshInstance3D" parent="Tiles"]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.00999999, -9)
 mesh = SubResource("PlaneMesh_56xk0")
 
 [node name="TestTerrain" parent="." instance=ExtResource("2_0h60y")]

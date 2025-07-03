@@ -8,7 +8,7 @@ extends StaticBody3D
 
 #region: --- Props ---
 ## Resource for tile raycasting
-var tile_raycast: Resource = load("res://data/modules/combat/board/tile/tile_raycasting.tscn")
+var tile_raycast: Resource = load("res://data/modules/combat/board/tile/raycasting/tile_raycasting.tscn")
 
 ## Whether the tile is reachable by movement
 var is_reachable: bool = false

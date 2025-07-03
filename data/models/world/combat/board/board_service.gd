@@ -3,7 +3,7 @@ extends RefCounted
 ## Service class for TacticsBoard
 
 ## The service we inject into every tile
-const TILE_SERVICE = preload("res://data/models/world/combat/board/tile_service.gd")
+const TILE_SERVICE = preload("res://data/models/world/combat/board/tiles/tile_service.gd")
 
 var res: BoardResource
 

@@ -55,18 +55,19 @@ func _execute_no_target_skill(user: DefaultUnit, skill: SkillResource, targetabl
 		targetable_units.erase(user)
 		
 	# 🟢 Apply primary effect to all targetable units
-	if skill.primary_effect == skill.PrimaryEffect.DAMAGE:
-		for target in targetable_units:
-			if not target or not target.is_alive():
-				continue
-			target.stats.apply_to_curr_health(-skill.primary_effect_amount)
-			print("Dealt %d damage to %s" % [skill.primary_effect_amount, target.name])
+	match skill.primary_effect:
+		skill.PrimaryEffect.DAMAGE:
+			for target in targetable_units:
+				if not target or not target.is_alive():
+					continue
+				target.stats.apply_to_curr_health(-skill.primary_effect_amount)
+				print("Dealt %d damage to %s" % [skill.primary_effect_amount, target.name])
 			
 	
 	#TODO: apply secondary effect in a radius from unit's root tile
-	#match skill.secondary_effect:
-		#skill.SecondaryEffect.KNOCKBACK:
-			#user.serv.movement.knockback_target(user, target, skill.secondary_effect_amount)
+	match skill.secondary_effect:
+		skill.SecondaryEffect.KNOCKBACK:
+			user.serv.movement.knockback_targets(user, targetable_units, skill.secondary_effect_amount)
 
 
 func _execute_target_unit_skill(user: DefaultUnit, skill: SkillResource, targetable_units: Array[DefaultUnit] = [], targetable_tiles: Array[Tile] = []) -> void:

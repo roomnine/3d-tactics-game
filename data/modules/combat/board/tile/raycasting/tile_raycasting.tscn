@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bs52frj63hmf0"]
 
-[ext_resource type="Script" uid="uid://cv12dj2vpjhy0" path="res://data/modules/combat/board/tile/tile_raycasting.gd" id="1_maxhb"]
+[ext_resource type="Script" uid="uid://cv12dj2vpjhy0" path="res://data/modules/combat/board/tile/raycasting/tile_raycasting.gd" id="1_maxhb"]
 
 [node name="TileRaycasting" type="Node3D"]
 script = ExtResource("1_maxhb")

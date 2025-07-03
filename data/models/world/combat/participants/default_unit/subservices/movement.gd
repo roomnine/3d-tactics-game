@@ -109,3 +109,53 @@ func check_movement_completion(unit: DefaultUnit) -> void:
 	if not unit.res.can_move:
 		unit.res.set_moving(false)
 		unit.character.adjust_to_center(unit)
+
+
+## Moves all target units away from the user
+## @param user: The unit performing the knockback
+## @param targets: Array of DefaultUnit to knock back
+## @param distance: How far to knock back
+## Moves all target units away from the user, only if there is a valid tile behind
+## @param user: The unit performing the knockback
+## @param targets: Array of DefaultUnit to knock back
+## @param distance: How far to knock back
+func knockback_targets(user: DefaultUnit, targets: Array[DefaultUnit], distance: int) -> void:
+	for target in targets:
+		if not target or not target.is_alive():
+			continue
+
+		var current_tile: Tile = target.get_tile()
+		if not current_tile:
+			print("Skipping knockback: target has no tile.")
+			continue
+
+		var direction_vector = (target.global_position - user.global_position).normalized()
+		var snapped_tile: Tile = current_tile
+
+		# Walk forward N steps in that direction
+		for i in range(distance):
+			var closest_neighbor: Tile = null
+			var min_angle = 180.0
+			for neighbor in snapped_tile.get_neighboring_tiles(10):
+				# 🟢 Check that neighbor Y <= current Y
+				if neighbor.global_position.y > snapped_tile.global_position.y + 0.1:
+					continue
+				# 🟢 Prefer the one most aligned with our push direction
+				var neighbor_dir = (neighbor.global_position - snapped_tile.global_position).normalized()
+				var angle = direction_vector.angle_to(neighbor_dir)
+				if angle < min_angle:
+					min_angle = angle
+					closest_neighbor = neighbor
+
+			# If no further neighbor in this direction, stop
+			if not closest_neighbor:
+				print("%s cannot be knocked further (no valid tile in direction)" % target.name)
+				break
+
+			snapped_tile = closest_neighbor
+
+		if snapped_tile and snapped_tile != current_tile:
+			target.global_position = snapped_tile.global_position
+			print("%s knocked back to tile %s" % [target.name, snapped_tile.name])
+		else:
+			print("%s could not be knocked back (no valid destination)" % target.name)
