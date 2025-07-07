@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileEffectResource" load_steps=2 format=3 uid="uid://cnfehldos3ppm"]
+
+[ext_resource type="Script" uid="uid://cbmcucrs5lytb" path="res://data/models/world/combat/board/tiles/tile_effects/tile_effect_res.gd" id="1_34wsb"]
+
+[resource]
+script = ExtResource("1_34wsb")
+name = "Obstructive Tile"
+description = "Prevents movement through this tile"
+effect_type = 1
+effect_magnitude = 0

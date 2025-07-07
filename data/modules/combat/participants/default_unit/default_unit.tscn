@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4r3dhhhqgkcr"]
+
+[ext_resource type="Script" uid="uid://8yviu36nudpc" path="res://data/modules/combat/participants/default_unit/default_unit.gd" id="1_mfk8d"]
+[ext_resource type="Script" uid="uid://wtc8ax8pvtqa" path="res://data/modules/combat/participants/default_unit/default_unit_sprite.gd" id="2_shglf"]
+[ext_resource type="Script" uid="uid://ckio3txli6fer" path="res://data/modules/status/stats.gd" id="3_3otks"]
+[ext_resource type="Script" uid="uid://dyrqa2cja3abm" path="res://data/modules/status/skills.gd" id="4_ik4ro"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_of4nk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25gph"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_25gph"]
+material = SubResource("StandardMaterial3D_25gph")
+
+[node name="DefaultUnit" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_mfk8d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_of4nk")
+
+[node name="Tile" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -2.1, 0)
+
+[node name="DefaultUnitSprite" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.6, 0)
+mesh = SubResource("CapsuleMesh_25gph")
+script = ExtResource("2_shglf")
+
+[node name="CharacterUI" type="Node3D" parent="DefaultUnitSprite"]
+
+[node name="NameLabel" type="Label3D" parent="DefaultUnitSprite/CharacterUI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+billboard = 1
+outline_modulate = Color(0, 0, 0, 0)
+text = "UnitName"
+font_size = 42
+outline_size = 0
+
+[node name="HealthLabel" type="Label3D" parent="DefaultUnitSprite/CharacterUI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+outline_modulate = Color(0, 0, 0, 0)
+text = "10/10"
+font_size = 42
+outline_size = 0
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_3otks")
+
+[node name="Skills" type="Node" parent="."]
+script = ExtResource("4_ik4ro")

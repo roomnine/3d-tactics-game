@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b353uk210ub1h"]
+
+[ext_resource type="PackedScene" uid="uid://chggfrkreo5bh" path="res://assets/maps/test_level/test_tactics_board.tscn" id="1_1p5nf"]
+[ext_resource type="Script" uid="uid://f8m30ular53t" path="res://data/modules/combat/level.gd" id="1_1r34i"]
+[ext_resource type="PackedScene" uid="uid://b4r3dhhhqgkcr" path="res://data/modules/combat/participants/default_unit/default_unit.tscn" id="2_01cox"]
+[ext_resource type="Script" uid="uid://cgnkjlmgm2igw" path="res://data/modules/combat/participants/participants.gd" id="2_ays4n"]
+
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_1r34i")
+
+[node name="TestTacticsBoard" parent="." instance=ExtResource("1_1p5nf")]
+unique_name_in_owner = true
+
+[node name="Participants" type="Node3D" parent="."]
+script = ExtResource("2_ays4n")
+
+[node name="PlayerUnits" type="Node3D" parent="Participants"]
+unique_name_in_owner = true
+
+[node name="Unit" parent="Participants/PlayerUnits" instance=ExtResource("2_01cox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8215, 2, 7.7806)
+
+[node name="EnemyUnits" type="Node3D" parent="Participants"]
+unique_name_in_owner = true

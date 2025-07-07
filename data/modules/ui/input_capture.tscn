@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0rciydb7u8t3"]
+
+[ext_resource type="Script" uid="uid://lsixvgrplecw" path="res://data/modules/ui/input_capture.gd" id="1_koa2h"]
+
+[node name="InputCapture" type="Node3D"]
+script = ExtResource("1_koa2h")
