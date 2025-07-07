@@ -31,10 +31,10 @@ func reset_all_tile_markers(board: TacticsBoard) -> void:
 
 ## Configure tiles in the board
 ## [param board] The TacticsBoard to configure
-func configure_tiles(board: TacticsBoard) -> void:
+func configure_tiles(board: TacticsBoard, tile_layout: TileLayout) -> void:
 	board.get_node("Tiles").visible = true
 	var _tiles: Node3D = board.get_node("Tiles")
-	TILE_SERVICE.tiles_into_static_bodies(_tiles)
+	TILE_SERVICE.tiles_into_static_bodies(_tiles, tile_layout)
 
 ## Process tiles surrounding a root tile
 ## [param root_tile] The starting tile
@@ -66,6 +66,11 @@ func process_surrounding_tiles(root_tile: Tile, height: float, allies_on_map: Ar
 		# Otherwise, enqueue neighbors
 		for _neighbor in _curr_tile.get_neighboring_tiles(height):
 			if _neighbor.pf_root != null or _neighbor == root_tile:
+				continue
+			
+			# 🟢 Check if the tile has an OBSTRUCTIVE effect
+			if _neighbor.effect and _neighbor.effect.effect_type == TileEffectResource.EffectType.OBSTRUCTIVE:
+				# Skip this tile — can't move through it
 				continue
 
 			# Compute vertical movement cost
@@ -155,6 +160,12 @@ func mark_reachable_tiles(board: TacticsBoard, root: Tile, distance: float) -> v
 		var _has_dist: bool = _t.pf_distance > 0
 		var _is_not_occupied: bool = not _t.is_tile_occupied()
 		var _is_root: bool = _t == root
+		
+		# 🟢 Skip if tile is OBSTRUCTIVE
+		if _t.effect and _t.effect.effect_type == TileEffectResource.EffectType.OBSTRUCTIVE:
+			_t.is_reachable = false
+			continue
+		
 		_t.is_reachable = (_has_dist and _t.pf_distance <= distance and _is_not_occupied) or _is_root
 
 
@@ -180,7 +191,7 @@ func mark_path_preview(board: TacticsBoard, target_tile: Tile) -> void:
 		current = current.pf_root
 
 
-##TODO: Marks preview of tiles being targeted
+## Marks preview of tiles being targeted
 ## [param board] The TacticsBoard containing the tiles
 ## [param root] The starting tile
 ## [param distance] The maximum attack distance
@@ -189,6 +200,11 @@ func mark_target_preview_tiles(board: TacticsBoard, root: Tile, distance: float)
 		var _has_dist: bool = _t.pf_distance > 0
 		var _is_reachable: bool = _t.pf_distance <= distance
 		var _is_root: bool = _t == root
+		
+		# 🟢 Skip if tile is OBSTRUCTIVE
+		if _t.effect and _t.effect.effect_type == TileEffectResource.EffectType.OBSTRUCTIVE:
+			_t.is_target_preview = false
+			continue
 		
 		_t.is_target_preview = _has_dist and _is_reachable or _is_root
 
@@ -202,6 +218,11 @@ func mark_targetable_tiles(board: TacticsBoard, root: Tile, distance: float) -> 
 		var _has_dist: bool = _t.pf_distance > 0
 		var _is_reachable: bool = _t.pf_distance <= distance
 		var _is_root: bool = _t == root
+		
+		# 🟢 Skip if tile is OBSTRUCTIVE
+		if _t.effect and _t.effect.effect_type == TileEffectResource.EffectType.OBSTRUCTIVE:
+			_t.is_targetable = false
+			continue
 		
 		_t.is_targetable = _has_dist and _is_reachable or _is_root
 

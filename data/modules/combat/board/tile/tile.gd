@@ -9,6 +9,8 @@ extends StaticBody3D
 #region: --- Props ---
 ## Resource for tile raycasting
 var tile_raycast: Resource = load("res://data/modules/combat/board/tile/raycasting/tile_raycasting.tscn")
+## The terrain/effect associated with this tile
+@export var effect: TileEffectResource
 
 ## Whether the tile is reachable by movement
 var is_reachable: bool = false

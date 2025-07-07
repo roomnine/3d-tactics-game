@@ -6,9 +6,12 @@ extends Node3D
 ## Dependency: [TacticsTile] -- Service: [TacticsTileService]
 
 
-## Resource containing arena-related data and configurations
+## Resource containing board-related data and configurations
 @export var res: BoardResource = load("res://data/models/world/combat/board/board.tres")
-## Service handling arena-related operations
+
+## Reference to the TileLayout node, handling tile layout
+@onready var tile_layout: TileLayout
+## Service handling board-related operations
 var serv: BoardService
 
 
@@ -18,14 +21,14 @@ func _ready() -> void:
 	serv.setup(self)
 
 
-## Resets all tile markers in the arena
+## Resets all tile markers in the board
 func reset_all_tile_markers() -> void:
 	serv.reset_all_tile_markers(self)
 
 
 ## Configures all tiles in the arena
-func configure_tiles() -> void:
-	serv.configure_tiles(self)
+func configure_tiles(tile_layout: TileLayout) -> void:
+	serv.configure_tiles(self, tile_layout)
 
 
 ## Processes tiles surrounding a given root tile

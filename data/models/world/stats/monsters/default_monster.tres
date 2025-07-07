@@ -13,5 +13,6 @@ default_color = Color(1, 0, 0.160784, 1)
 movement = 3
 jump = null
 max_health = 100
+max_mp = 3
 attack_range = 1
 attack_power = 5

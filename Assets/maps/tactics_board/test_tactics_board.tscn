@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://chggfrkreo5bh"]
+[gd_scene load_steps=6 format=3 uid="uid://chggfrkreo5bh"]
 
 [ext_resource type="Script" uid="uid://brtv2a12kbjys" path="res://data/models/world/combat/board/tactics_board.gd" id="1_qdji5"]
 [ext_resource type="PackedScene" uid="uid://dsmkgvbxej6t5" path="res://assets/maps/terrain/test_terrain.tscn" id="2_2lodv"]
+[ext_resource type="Script" uid="uid://b3lvbn2rma6kk" path="res://data/modules/combat/board/tile_layout.gd" id="3_2lodv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abwa2"]
 albedo_color = Color(0.654232, 0.654232, 0.654232, 1)
@@ -1477,3 +1478,7 @@ mesh = SubResource("PlaneMesh_56xk0")
 
 [node name="TestTerrain" parent="." instance=ExtResource("2_2lodv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 6.5)
+
+[node name="TileLayout" type="Node" parent="."]
+script = ExtResource("3_2lodv")
+metadata/_custom_type_script = "uid://b3lvbn2rma6kk"

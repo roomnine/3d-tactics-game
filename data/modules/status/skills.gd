@@ -2,7 +2,7 @@ class_name Skills
 extends Node
 
 var skill_paths: Dictionary = {
-	"ground_slam": "res://data/models/world/skills/skill/ground_slam.tres",
+	"ground_slam": "res://data/models/world/skills/resources/ground_slam.tres",
 }
 
 ## Array of loaded Skill resources

@@ -6,9 +6,8 @@ extends CharacterBody3D
 ## - [code]rotate_camera[/code]: "Cardinal Points" mode [i](Q,E)[/i][br]
 ## - [code]move_camera[/code]: "Panning" mode [i](W,A,S,D)[/i][br]
 ## - [code]free_look[/code]: "Free Look" mode [i](MMB or Right Stick movement)[/i][br]
-## - [code]follow[/code]: "Focus" mode [i](programmatically called)[/i][br][br]
 ## 
-## Resource Interface: [TacticsCameraResource] -- Service: [TacticsCameraService]
+## Resource Interface: [CameraResource] -- Service: [CameraService]
 
 ## Resource containing camera attributes and signals
 @export var res: CameraResource = load("res://data/models/view/camera/camera.tres")

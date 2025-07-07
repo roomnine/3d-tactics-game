@@ -26,6 +26,10 @@ var jump: int
 var max_health: int
 ## Current health
 var curr_health: int
+## Maximum mana points
+var max_mp: int
+## Current mana points
+var curr_mp: int
 ## Sprite path
 var sprite: String
 ## Default color
@@ -48,6 +52,8 @@ func import_stats(stats: StatsResource) -> void:
 	stats.set_jump()
 	max_health = stats.max_health
 	curr_health = max_health
+	max_mp = stats.max_mp
+	curr_mp = max_mp
 	sprite = stats.sprite
 	attack_power = stats.attack_power
 	attack_range = stats.attack_range

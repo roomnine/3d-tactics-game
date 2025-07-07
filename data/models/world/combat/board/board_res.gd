@@ -18,6 +18,8 @@ signal called_mark_path_preview(tile: Tile)
 var path_tiles_stack: Array = []
 ## Stores height penalty
 const HEIGHT_PENALTY: float = 1.0
+## Stores board layout
+var layout: TileLayout = null
 
 ## Triggers the reset of all tile markers
 func reset_all_tile_markers() -> void:

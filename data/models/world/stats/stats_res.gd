@@ -26,6 +26,8 @@ extends Resource
 @export var jump: float = movement / 2.0
 ## Maximum health of the actor
 @export var max_health: int = 5
+## Maximum mana points of the actor
+@export var max_mp: int = 3
 #endregion
 
 #region Offensive Stats
