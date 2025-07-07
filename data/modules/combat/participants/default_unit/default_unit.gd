@@ -4,6 +4,10 @@ extends CharacterBody3D
 
 ## Resource containing control-related data and configurations
 @export var controls: ControlsResource = load("res://data/models/view/control/control.tres")
+## Resource containing initial stats for the actor
+@export var starting_stats: StatsResource
+## Array of initial skills for the actor
+@export var starting_skills: Array[String]
 
 ## Resource containing unit-specific data and configurations
 var res: DefaultUnitResource
@@ -11,20 +15,23 @@ var res: DefaultUnitResource
 var serv: DefaultUnitService
 
 ## Reference to the Stats node, handling unit statistics
-@onready var stats: Stats = $Expertise/Stats
-## TODO: The expertise (class or type) of the unit
-#@onready var expertise: String = $Expertise/Stats.expertise
+@onready var stats: Stats = $Stats
+## Reference to the Skills node, handling unit skills
+@onready var skills: Skills = $Skills
 ## Reference to the DefaultUnitSprite node, handling visual representation
 @onready var character: DefaultUnitSprite = $DefaultUnitSprite
 
 
 ## Initializes the DefaultUnit node
 func _ready() -> void:
+	print("[DefaultUnit] starting_skills:", starting_skills)
 	res = DefaultUnitResource.new()
 	serv = DefaultUnitService.new()
+	stats.import_stats(starting_stats) # Initialize stats from the starting_stats resource
+	skills.import_skills(starting_skills) # Initialize skills from the starting_stats array
 	#TODO: serv.setup(self)
-	#TODO: controls.set_actions_menu_visibility(false, self)
-	#TODO: show_unit_stats(false)
+	controls.set_actions_menu_visibility(false, self)
+	show_unit_stats(false)
 
 
 ## Processes unit logic every physics frame
@@ -43,9 +50,12 @@ func center() -> bool:
 
 ## Gets the tile the unit is currently on
 ##
-## @return: The TacticsTile the unit is on
+## @return: The Tile the unit is on
 func get_tile() -> Tile:
-	return $Tile.get_collider()
+	var obj = $Tile.get_collider()
+	if obj and obj is Tile:
+		return obj
+	return null
 
 
 ## Checks if the unit is alive
@@ -74,3 +84,37 @@ func can_unit_move() -> bool:
 ## @return: Whether the unit can attack and is alive
 func can_unit_attack() -> bool:
 	return res.can_attack and is_alive()
+
+
+## Shows or hides unit stats
+##
+## @param v: visibility yes or no
+func show_unit_stats(v: bool) -> void:
+	$DefaultUnitSprite/CharacterUI.visible = v
+
+
+## Initiates a basic attack on a target unit
+## 
+## @param target_unit: DefaultUnit to attack
+func basic_attack(target_unit: DefaultUnit) -> bool:
+	return serv.basic_attack(self, target_unit)
+
+
+## Initiates using a skill
+##
+## @param skill: The skill resource to use
+## @param targetable_units: The units being targeted if exists
+## @param targetable_tiles: The tiles being targeted if exists
+## @return: Whether the skill was successfully used
+func use_skill(unit: DefaultUnit, skill: SkillResource, targetable_units: Array[DefaultUnit] = [], targetable_tiles: Array[Tile] = []):
+	return serv.use_skill(self, skill, targetable_units, targetable_tiles)
+
+
+## Resets the unit's turn state
+func reset_turn() -> void:
+	res.reset_turn()
+
+
+## Ends the unit's turn
+func end_unit_turn() -> void:
+	res.end_unit_turn()

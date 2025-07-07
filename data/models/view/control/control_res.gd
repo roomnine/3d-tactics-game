@@ -16,6 +16,12 @@ signal called_select_new_location
 signal called_set_cursor_shape_to_move
 ## Signal emitted when the cursor shape needs to be set to "arrow".
 signal called_set_cursor_shape_to_arrow
+## Signal emitted when the player should confirm skill usage for a no-target skill.
+signal called_confirm_skill_usage
+## Signal emitted when the player should select a unit as skill target.
+signal called_select_unit_to_use_skill_on
+## Signal emitted when the player should select a tile as skill target.
+signal called_select_tile_to_use_skill_on
 
 ## Indicates whether the current input device is a joystick.
 @export var is_joystick: bool
@@ -24,16 +30,15 @@ signal called_set_cursor_shape_to_arrow
 
 ## Dictionary of available actions and their corresponding methods.
 var actions: Dictionary = {
-	"Move": "_player_wants_to_move",
-	"Skill": "_player_wants_to_use_skill",
-	"Cancel": "_player_wants_to_cancel",
-	"Attack": "_player_wants_to_attack",
-	"EndTurn": "_player_wants_to_end_turn"
+	"BasicActions/Move": "_player_wants_to_move",
+	"BasicActions/Cancel": "_player_wants_to_cancel",
+	"BasicActions/Attack": "_player_wants_to_attack",
+	"BasicActions/EndTurn": "_player_wants_to_end_turn"
 }
 
-## TODO: Sets the visibility of the actions menu.
-#func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
-	#called_set_actions_menu_visibility.emit(v, p)
+## Sets the visibility of the actions menu.
+func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
+	called_set_actions_menu_visibility.emit(v, p)
 
 
 ## Initiates camera movement.
@@ -49,6 +54,21 @@ func select_unit(player: PlayerUnits) -> void:
 ## Selects a unit to attack.
 func select_unit_to_attack() -> void:
 	called_select_unit_to_attack.emit()
+
+
+## Confirm skill to use
+func confirm_skill_usage() -> void:
+	called_confirm_skill_usage.emit()
+
+
+## Selects a unit as skill target.
+func select_unit_to_use_skill_on() -> void:
+	called_select_unit_to_use_skill_on.emit()
+
+
+## Selects a tile as skill target.
+func select_tile_to_use_skill_on() -> void:
+	called_select_tile_to_use_skill_on.emit()
 
 
 ## Selects a new location.

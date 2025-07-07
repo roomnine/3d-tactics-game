@@ -10,9 +10,16 @@ signal called_get_pathfinding_tilestack(tile: Tile)
 ## Emitted when a tile needs to be marked as hovered
 ## [param tile] The tile to be marked as hovered
 signal called_mark_hover_tile(tile: Tile)
+## Emitted when a tile needs to be marked as being a path preview
+## [param tile] The tile to be marked as being a path preview
+signal called_mark_path_preview(tile: Tile)
 
 ## Stores the current pathfinding tiles stack
 var path_tiles_stack: Array = []
+## Stores height penalty
+const HEIGHT_PENALTY: float = 1.0
+## Stores board layout
+var layout: TileLayout = null
 
 ## Triggers the reset of all tile markers
 func reset_all_tile_markers() -> void:
@@ -29,3 +36,8 @@ func get_pathfinding_tilestack(tile: Tile) -> Array:
 ## [param tile] The tile to be marked as hovered
 func mark_hover_tile(tile: Tile) -> void:
 	called_mark_hover_tile.emit(tile)
+
+## Marks a tile as hovered
+## [param tile] The tile to be marked as hovered
+func mark_path_preview(tile: Tile) -> void:
+	called_mark_path_preview.emit(tile)

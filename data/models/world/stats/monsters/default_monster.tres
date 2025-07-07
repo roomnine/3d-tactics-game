@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatsResource" load_steps=2 format=3 uid="uid://68y8ysbo2bvg"]
+
+[ext_resource type="Script" uid="uid://4b53xt302scn" path="res://data/models/world/stats/stats_res.gd" id="1_khpj3"]
+
+[resource]
+script = ExtResource("1_khpj3")
+override_name = "DefaultMonster"
+status = ""
+strategy = 0
+level = 1
+sprite = "res://assets/textures/actors/"
+default_color = Color(1, 0, 0.160784, 1)
+movement = 3
+jump = null
+max_health = 100
+max_mp = 3
+attack_range = 1
+attack_power = 5

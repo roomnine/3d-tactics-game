@@ -2,10 +2,10 @@ class_name ParticipantsResource
 extends Resource
 ## Attributes & signals of the tactics participant.
 ## 
-## Dependency of: [TacticsParticipant]
+## Dependency of: [Participants]
 
 ## Signal emitted when a turn is skipped
-signal called_skip_turn
+signal called_end_turn
 
 #region Stage Selection
 ## Constant for the unit selection stage
@@ -24,6 +24,14 @@ const STAGE_DISPLAY_TARGETS: int = 5
 const STAGE_SELECT_ATTACK_TARGET: int = 6
 ## Constant for the attack execution stage
 const STAGE_ATTACK: int = 7
+## Constant for the no-target skill confirmation stage
+const STAGE_SELECT_SKILL_NO_TARGET: int = 8
+## Constant for the unit selection stage for skill
+const STAGE_SELECT_SKILL_TARGET_UNIT: int = 9
+## Constant for the tile selection stage for skill
+const STAGE_SELECT_SKILL_TARGET_TILE: int = 10
+## Constant for the skill execution stage
+const STAGE_SKILL: int = 11
 ## The current stage of the participant's turn
 var stage: int = 0
 #endregion
@@ -33,17 +41,23 @@ var curr_unit: DefaultUnit = null:
 	set(val):
 		curr_unit = val
 		DebugLog.debug_nospam("unit", val)
-## The unit that can be attacked
-var attackable_unit: DefaultUnit = null
-## The node containing the target units
-var targets: Node = null
+## The node containing allies on map
+var allies_on_map: Node = null
+## The node containing enemies on map
+var enemies_on_map: Node = null
+## The skill selected
+var selected_skill: SkillResource = null
+## The unit that can be targeted by skill
+var targetable_unit: DefaultUnit = null
+## The tile selected for a skill
+var targetable_tile: Tile = null
 
-## Flag to control the display of opponent stats
-var display_opponent_stats: bool = false
+## Flag to control the display of enemy stats
+var display_enemy_stats: bool = false
 ## Flag indicating if the turn has just started
 var turn_just_started: bool = true
 
 
-## Emits the skip_turn signal
-func skip_turn() -> void:
-	called_skip_turn.emit()
+## Emits the end_turn signal
+func end_turn() -> void:
+	called_end_turn.emit()

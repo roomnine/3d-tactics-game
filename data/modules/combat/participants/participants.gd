@@ -14,11 +14,11 @@ extends Node3D
 ## Service handling participant logic and operations
 var serv: ParticipantsService
 ## Reference to the TacticsBoard node
-@onready var board: TacticsBoard = %TacticsBoard
+@onready var board: TacticsBoard = %TestTacticsBoard
 ## Reference to the PlayerUnits node
 @onready var player: PlayerUnits = %PlayerUnits
 ## Reference to the EnemyUnits node
-@onready var enemy: EnemyUnits = %Enemyunits
+@onready var enemy: EnemyUnits = %EnemyUnits
 
 
 ## Initializes the TacticsParticipant node
@@ -27,8 +27,8 @@ func _ready() -> void:
 	serv = ParticipantsService.new(res, camera, controls)
 	# Set up the service with this node as context
 	serv.setup(self)
-	# TODO: Connect the skip_turn signal to the skip_turn method
-	#res.connect("called_skip_turn", skip_turn)
+	# Connect the end_turn signal to the end_turn method
+	res.connect("called_end_turn", end_turn)
 
 
 ## Performs the participant's action
@@ -71,6 +71,6 @@ func reset_turn(parent: Node3D) -> void:
 	serv.reset_turn(parent)
 
 
-## TODO: Skips the participant's turn
-#func skip_turn() -> void:
-	#serv.skip_turn(player)
+## Ends the participant's turn
+func end_turn() -> void:
+	serv.end_turn(player)

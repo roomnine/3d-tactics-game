@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://b353uk210ub1h"]
+
+[ext_resource type="Script" uid="uid://f8m30ular53t" path="res://data/modules/combat/level.gd" id="1_1r34i"]
+[ext_resource type="PackedScene" uid="uid://b4r3dhhhqgkcr" path="res://data/modules/combat/participants/default_unit/default_unit.tscn" id="2_01cox"]
+[ext_resource type="PackedScene" uid="uid://dwtuudlhmr224" path="res://assets/maps/tactics_board/test_tactics_board2.tscn" id="2_4w1hb"]
+[ext_resource type="Script" uid="uid://cgnkjlmgm2igw" path="res://data/modules/combat/participants/participants.gd" id="2_ays4n"]
+[ext_resource type="Script" uid="uid://cfoguiloro8pe" path="res://data/modules/combat/participants/player_units.gd" id="4_pwj2c"]
+[ext_resource type="Resource" uid="uid://dskivfudtrtat" path="res://data/models/world/stats/heroes/default_hero.tres" id="6_eewgp"]
+[ext_resource type="Script" uid="uid://dwcxssgfg5rb2" path="res://data/modules/combat/participants/enemy_units.gd" id="6_s1hus"]
+[ext_resource type="Resource" uid="uid://68y8ysbo2bvg" path="res://data/models/world/stats/monsters/default_monster.tres" id="8_0p5uw"]
+
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_1r34i")
+camera_boundary_radius = null
+
+[node name="TestTacticsBoard" parent="." instance=ExtResource("2_4w1hb")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 9)
+
+[node name="Participants" type="Node3D" parent="."]
+script = ExtResource("2_ays4n")
+
+[node name="PlayerUnits" type="Node3D" parent="Participants"]
+unique_name_in_owner = true
+script = ExtResource("4_pwj2c")
+
+[node name="Unit" parent="Participants/PlayerUnits" instance=ExtResource("2_01cox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8215, 1, 3.7806)
+starting_stats = ExtResource("6_eewgp")
+starting_skills = Array[String](["ground_slam"])
+
+[node name="EnemyUnits" type="Node3D" parent="Participants"]
+unique_name_in_owner = true
+script = ExtResource("6_s1hus")
+
+[node name="Unit" parent="Participants/EnemyUnits" instance=ExtResource("2_01cox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8215, 1, 16.7806)
+starting_stats = ExtResource("8_0p5uw")
+starting_skills = Array[String](["ground_slam"])

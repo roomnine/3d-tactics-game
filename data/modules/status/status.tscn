@@ -1,11 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://l1plvijkd8t1"]
+[gd_scene load_steps=4 format=3 uid="uid://cx1gmwoiphydg"]
 
-[ext_resource type="Script" uid="uid://cqt41gfspixoc" path="res://data/modules/status/status.gd" id="1_7tumk"]
 [ext_resource type="Script" uid="uid://ckio3txli6fer" path="res://data/modules/status/stats.gd" id="2_b1o6a"]
 [ext_resource type="Resource" uid="uid://dskivfudtrtat" path="res://data/models/world/stats/heroes/default_hero.tres" id="2_qsx6f"]
 
+[sub_resource type="GDScript" id="GDScript_7tumk"]
+script/source = "class_name Status
+extends Node
+## The status of a game actor.
+##
+## Assigns a set of stats to a unit, 
+
+## Resource containing initial stats for the actor
+@export var starting_stats: StatsResource
+## Array of initial skills for the actor
+@export var starting_skills: Array[String]
+
+## Node containing the actor's stats
+@onready var stats: Stats = $Stats
+
+
+func _ready() -> void:
+	if not starting_stats:
+		push_error(\"Status needs a StatsResource (Starting Stats) from /data/models/stats/\") # Error if starting stats are not set
+	stats.import_stats(starting_stats) # Initialize stats from the starting_stats resource
+"
+
 [node name="Status" type="Node"]
-script = ExtResource("1_7tumk")
+script = SubResource("GDScript_7tumk")
 starting_stats = ExtResource("2_qsx6f")
 
 [node name="Stats" type="Node" parent="."]

@@ -9,7 +9,7 @@ extends Participants
 var player_serv: PlayerService
 
 
-## Initializes the TacticsPlayer node
+## Initializes the PlayerUnits node
 func _ready() -> void:
 	# Call the parent class's _ready function
 	super._ready()
@@ -42,9 +42,9 @@ func show_available_movements() -> void:
 	player_serv.show_available_movements()
 
 
-## Displays the attackable targets for the player's unit
-func display_attackable_targets() -> void:
-	player_serv.display_attackable_targets()
+## Displays the targetable targets for the player's unit
+func display_targetable_targets() -> void:
+	player_serv.display_targetable_targets()
 
 
 ## Initiates the movement of the player's unit

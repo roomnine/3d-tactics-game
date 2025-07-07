@@ -12,6 +12,12 @@ extends Node3D
 @export var camera_boundary_radius: float = 10.0
 ## UI control resource for the tactics system
 @export var ui_control: ControlsResource = load("res://data/models/view/control/control.tres")
+## Board layout for the level
+@export var starting_layout: TileLayoutResource = load("res://data/models/world/combat/board/tiles/tile_layout/resources/test_layout.tres")
+
+## Reference to the TileLayout node, handling tile layout
+@onready var tile_layout: TileLayout = %TestTacticsBoard/TileLayout
+
 ## Reference to the Participants node
 var participant: Participants
 ## Reference to the PlayerUnits node
@@ -33,11 +39,12 @@ func _ready() -> void:
 	
 	# Initialize node references
 	participant = $Participants
-	player = %PlayerUnits
-	enemy = %EnemyUnits
+	player = $Participants/PlayerUnits
+	enemy = $Participants/EnemyUnits
 	board = $TestTacticsBoard
 	
-	board.configure_tiles() # Configure board tiles
+	tile_layout.import_layout(starting_layout)
+	board.configure_tiles(tile_layout) # Configure board tiles
 	participant.configure(camera, ui_control) # Configure participant with camera and UI control
 	
 	# Update camera boundary radius if necessary

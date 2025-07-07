@@ -1,7 +1,7 @@
 class_name Stats
 extends Node
 
-## Placeholder script that essentially replicates the Unit's Expertise Model 
+## Placeholder script that essentially replicates the Unit's Status Model 
 ## into its own self-contained Stats class. 
 ## 
 ## This class can be made into a Resource Save utility for 
@@ -26,8 +26,14 @@ var jump: int
 var max_health: int
 ## Current health
 var curr_health: int
+## Maximum mana points
+var max_mp: int
+## Current mana points
+var curr_mp: int
 ## Sprite path
 var sprite: String
+## Default color
+var default_color: Color
 #endregion
 
 #region Offensive Stats
@@ -46,9 +52,12 @@ func import_stats(stats: StatsResource) -> void:
 	stats.set_jump()
 	max_health = stats.max_health
 	curr_health = max_health
+	max_mp = stats.max_mp
+	curr_mp = max_mp
 	sprite = stats.sprite
 	attack_power = stats.attack_power
 	attack_range = stats.attack_range
+	default_color = stats.default_color
 
 ## Provided a health operation as a parameter (e.g. "-2", "1"), adds the value to current health. As a consequence, this function serves for both damage and healing.
 func apply_to_curr_health(new: int) -> void:

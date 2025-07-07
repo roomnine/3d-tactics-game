@@ -13,11 +13,11 @@ extends MeshInstance3D
 @onready var character_ui_name_label: Label3D = $CharacterUI/NameLabel
 
 
-## Sets up the unit sprite with the given stats and expertise
+## Sets up the unit sprite with the given stats and status
 ##
 ## @param stats: The Stats resource containing unit data
-## @param expertise: The unit's expertise (class or type)
-func setup(stats: Stats, expertise: String) -> void:
+## @param status: The unit's status (class or type)
+func setup(stats: Stats, status: String) -> void:
 	#var playback: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 	#if playback is AnimationNodeStateMachinePlayback:
 		#animator = playback
@@ -27,8 +27,8 @@ func setup(stats: Stats, expertise: String) -> void:
 	#
 	#animator.start("IDLE")
 	#animation_tree.active = true
-	mesh = load(stats.sprite) as Mesh
-	character_ui_name_label.text = stats.override_name if stats.override_name else expertise
+	#mesh = load(stats.sprite) as Mesh
+	character_ui_name_label.text = stats.override_name if stats.override_name else status
 
 
 ## TODO: Starts the appropriate animation based on the unit's movement and state

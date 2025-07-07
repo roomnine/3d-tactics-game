@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=3 format=3 uid="uid://6afv16vcso8v"]
+
+[ext_resource type="Script" uid="uid://jht47nuj73dj" path="res://data/models/world/skills/skill_res.gd" id="1_u6mlo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yoxad"]
+
+[resource]
+script = ExtResource("1_u6mlo")
+name = "Ground Slam"
+description = "slams ground"
+icon = SubResource("PlaceholderTexture2D_yoxad")
+energy_cost = 3
+skill_type = 2
+range = 0.0
+area_radius = 2.0
+friendly_fire = false
+self_inflicting = false
+primary_effect = 1
+primary_effect_amount = 5
+secondary_effect = 1
+secondary_effect_amount = 1

@@ -19,9 +19,9 @@ var curr_unit: DefaultUnit = null
 ## Service handling control logic
 var serv: TacticsControlsService
 
-### Texture for Xbox controller layout
+### TODO: Texture for Xbox controller layout
 #@onready var layout_xbox: Texture2D = load("res://assets/textures/ui/labels/controls-ui-xbox.png")
-### Texture for PC controls layout
+### TODO: Texture for PC controls layout
 #@onready var layout_pc: Texture2D = load("res://assets/textures/ui/labels/controls-ui.png")
 ## Node for capturing mouse clicks
 @onready var input_capture: InputCapture = $InputCapture
@@ -66,8 +66,8 @@ func move_camera(delta: float) -> void:
 ## Retrieves an action button node
 func get_act(action: String = "") -> Button:
 	if action == "": 
-		return %Actions
-	return %Actions.get_node(action)
+		return %ActionArea
+	return %ActionArea.get_node(action)
 
 
 ## Checks if the mouse is hovering over a UI element
@@ -75,9 +75,9 @@ func is_mouse_hovering_ui_elem() -> bool:
 	return serv.is_mouse_hovering_ui_elem(self)
 
 
-## TODO: Sets the visibility of the actions menu
-#func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
-	#serv.set_actions_menu_visibility(v, p, self)
+## Sets the visibility of the actions menu
+func set_actions_menu_visibility(v: bool, p: DefaultUnit) -> void:
+	serv.set_actions_menu_visibility(v, p, self)
 
 
 ## Gets the 3D position of the mouse in the game world
@@ -100,6 +100,21 @@ func select_unit_to_attack() -> void:
 	serv.select_unit_to_attack(self)
 
 
+## Confirm non-targeting skill to use
+func confirm_skill_usage() -> void:
+	serv.confirm_skill_usage(self)
+
+
+## Initiates the process of selecting a unit to use a skill on
+func select_unit_to_use_skill_on() -> void:
+	serv.select_unit_to_use_skill_on(self)
+
+
+## Initiates the process of selecting a unit to use a skill on
+func select_tile_to_use_skill_on() -> void:
+	serv.select_tile_to_use_skill_on(self)
+
+
 ## Handles the player's intention to move
 func _player_wants_to_move() -> void:
 	serv.player_wants_to_move()
@@ -111,8 +126,8 @@ func _player_wants_to_cancel() -> void:
 
 
 ## Handles the player's intention to use skill
-func _player_wants_to_use_skill() -> void:
-	serv.player_wants_to_use_skill()
+func _player_wants_to_use_skill(skill: SkillResource) -> void:
+	serv.player_wants_to_use_skill(skill)
 
 
 ## Handles the player's intention to end their turn

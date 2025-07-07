@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileEffectResource" load_steps=2 format=3 uid="uid://cbqunbmc4ctal"]
+
+[ext_resource type="Script" uid="uid://cbmcucrs5lytb" path="res://data/models/world/combat/board/tiles/tile_effects/tile_effect_res.gd" id="1_3m8tn"]
+
+[resource]
+script = ExtResource("1_3m8tn")
+name = "Default Tile"
+description = "Just a regular tile"
+effect_type = 0
+effect_magnitude = 0

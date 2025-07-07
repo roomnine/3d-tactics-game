@@ -4,14 +4,16 @@
 
 [resource]
 script = ExtResource("1_bmotw")
-override_name = "DefaultName"
+override_name = "DefaultHero"
 status = ""
 strategy = 0
 level = 1
 sprite = "res://assets/textures/actors/"
+default_color = Color(0, 1, 0, 1)
 movement = 3
 jump = null
-max_health = 5
+max_health = 10
+max_mp = 3
 attack_range = 1
-attack_power = 1
+attack_power = 5
 metadata/_custom_type_script = "uid://4b53xt302scn"
