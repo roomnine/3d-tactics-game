@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="TileLayoutResource" load_steps=4 format=3 uid="uid://htrfqwr0fus7"]
+[gd_resource type="Resource" script_class="TileLayoutResource" load_steps=5 format=3 uid="uid://htrfqwr0fus7"]
 
 [ext_resource type="Script" uid="uid://sde0lpkvtshs" path="res://data/models/world/combat/board/tiles/tile_layout/tile_layout_res.gd" id="1_ihija"]
 [ext_resource type="Resource" uid="uid://cbqunbmc4ctal" path="res://data/models/world/combat/board/tiles/tile_effects/resources/default.tres" id="2_eq2rl"]
 [ext_resource type="Resource" uid="uid://cnfehldos3ppm" path="res://data/models/world/combat/board/tiles/tile_effects/resources/obstructive.tres" id="3_3g6qh"]
+[ext_resource type="Resource" uid="uid://1ayjm7sy5apq" path="res://data/models/world/combat/board/tiles/tile_effects/resources/victory.tres" id="3_buh3g"]
 
 [resource]
 script = ExtResource("1_ihija")
@@ -307,10 +308,10 @@ tile_layout = {
 298: ExtResource("2_eq2rl"),
 299: ExtResource("2_eq2rl"),
 300: ExtResource("2_eq2rl"),
-301: ExtResource("2_eq2rl"),
-302: ExtResource("2_eq2rl"),
-303: ExtResource("2_eq2rl"),
-304: ExtResource("2_eq2rl"),
+301: ExtResource("3_buh3g"),
+302: ExtResource("3_buh3g"),
+303: ExtResource("3_buh3g"),
+304: ExtResource("3_buh3g"),
 305: ExtResource("3_3g6qh"),
 306: ExtResource("3_3g6qh"),
 307: ExtResource("3_3g6qh"),

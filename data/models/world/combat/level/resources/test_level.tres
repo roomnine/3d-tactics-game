@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://mtcrn7ts2kr7"]
+
+[ext_resource type="Script" uid="uid://bsmhevggjd6vp" path="res://data/models/world/combat/level/level_res.gd" id="1_u8vl4"]
+
+[resource]
+script = ExtResource("1_u8vl4")

@@ -2,8 +2,8 @@ class_name TacticsBoard
 extends Node3D
 ## Tile config & sorting, neighbours, hover & reach UI overlay, pathfinding and targeting utilities.
 ## 
-## Resource Interface: [TacticsArenaResource] -- Service: [TacticsArenaService]
-## Dependency: [TacticsTile] -- Service: [TacticsTileService]
+## Resource Interface: [BoardResource] -- Service: [BoardService]
+## Dependency: [Tile] -- Service: [TileService]
 
 
 ## Resource containing board-related data and configurations
@@ -87,7 +87,7 @@ func mark_targetable_tiles(root: Tile, distance: float) -> void:
 	serv.mark_targetable_tiles(self, root, distance)
 
 
-## TODO: Marks tiles being targeted by a skill within a certain distance from a root tile
+## Marks tiles being targeted by a skill within a certain distance from a root tile
 ## [param root] The starting tile
 ## [param distance] The maximum attack distance
 func mark_target_preview_tiles(root: Tile, distance: float) -> void:

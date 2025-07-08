@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileEffectResource" load_steps=2 format=3 uid="uid://1ayjm7sy5apq"]
+
+[ext_resource type="Script" uid="uid://cbmcucrs5lytb" path="res://data/models/world/combat/board/tiles/tile_effects/tile_effect_res.gd" id="1_hg1qu"]
+
+[resource]
+script = ExtResource("1_hg1qu")
+name = "Victory"
+description = "King of the hill-style occupation gives player a one point swing in their favor"
+effect_type = 0
+effect_magnitude = 0
+is_victory_tile = true
