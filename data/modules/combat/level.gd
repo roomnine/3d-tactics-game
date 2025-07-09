@@ -22,16 +22,6 @@ extends Node3D
 
 ## Service handling level-related operations
 var serv: LevelService
-## Reference to the Participants node
-var participant: Participants
-## Reference to the PlayerUnits node
-var player: PlayerUnits = null
-## Reference to the EnemyUnits node
-var enemy: EnemyUnits
-## Reference to the TacticsBoard node
-var board: TacticsBoard
-## Current turn stage (0: init, 1: handle)
-var turn_stage: int = 0
 #endregion
 
 #region: --- Processing ---
@@ -42,17 +32,16 @@ func _ready() -> void:
 		push_error("Camera needs a CameraResource from /data/models/view/camera/tactics/")
 	
 	# Initialize node references
-	participant = $Participants
-	player = $Participants/PlayerUnits
-	enemy = $Participants/EnemyUnits
-	board = $TestTacticsBoard
+	res.participant = $Participants
+	res.player = $Participants/PlayerUnits
+	res.enemy = $Participants/EnemyUnits
+	res.board = $TestTacticsBoard
 	
 	tile_layout.import_layout(starting_layout)
-	board.configure_tiles(tile_layout) # Configure board tiles
-	participant.configure(camera, ui_control) # Configure participant with camera and UI control
+	res.board.configure_tiles(tile_layout) # Configure board tiles
+	res.participant.configure(camera, ui_control) # Configure participant with camera and UI control
 	
 	serv = LevelService.new(res)
-	serv.setup(self)
 	
 	# Update camera boundary radius if necessary
 	if camera.boundary_radius != camera_boundary_radius:
@@ -60,7 +49,7 @@ func _ready() -> void:
 
 ## State machine for turns
 func _physics_process(delta: float) -> void:
-	match turn_stage:
+	match res.turn_stage:
 		0: _init_turn() # Initialize turn
 		1: _handle_turn(delta) # Handle ongoing turn
 		2: _end_level() # Handle game ending
@@ -69,47 +58,56 @@ func _physics_process(delta: float) -> void:
 #region: --- Methods ---
 ## Checks requirements to begin the first turn.[br]Used by [PlayerUnits], [EnemyUnits]
 func _init_turn() -> void:
-	if participant.is_configured(player) and participant.is_configured(enemy):
-		turn_stage = 1 # Move to turn handling stage if both player and enemy are configured
+	if res.participant.is_configured(res.player) and res.participant.is_configured(res.enemy):
+		res.turn_stage = 1 # Move to turn handling stage if both player and enemy are configured
 
 ## Turn state management.[br]Used by [PlayerUnits], [EnemyUnits]
 func _handle_turn(delta: float) -> void:
-	DebugLog.debug_nospam("player_can_act", participant.can_act(player))
+	DebugLog.debug_nospam("player_can_act", res.participant.can_act(res.player))
 	
-	if participant.can_act(player):
-		if not participant.is_configured(player):
-			participant.configure(camera, ui_control) # Configure player if not already done
-		participant.act(delta, true, player) # Player's turn to act
+	if res.participant.can_act(res.player):
+		if not res.participant.is_configured(res.player):
+			res.participant.configure(camera, ui_control) # Configure player if not already done
+		res.participant.act(delta, true, res.player) # Player's turn to act
 		
-	elif participant.can_act(enemy):
-		if not participant.is_configured(enemy):
-			participant.configure(camera, ui_control) # Configure enemy if not already done
-		participant.act(delta, false, enemy) # Enemy's turn to act
+	elif res.participant.can_act(res.enemy):
+		if not res.participant.is_configured(res.enemy):
+			res.participant.configure(camera, ui_control) # Configure enemy if not already done
+		res.participant.act(delta, false, res.enemy) # Enemy's turn to act
 		
 	else:
 		if DebugLog.debug_enabled:
 			print_rich("[color=green]0Oo◦° O-----------------------------------O °◦oO0[/color]")
 			print_rich("[color=green]0Oo◦°[/color][color=red] >}=----->> [/color][color=yellow][ Turn reset! ][/color][color=red] <<-----={< [/color][color=green]°◦oO0[/color]")
 			print_rich("[color=green]0Oo◦° O-----------------------------------O °◦oO0[/color]")
-		player.reset_turn(player) # Reset player's turn
-		enemy.reset_turn(enemy) # Reset enemy's turn
+		res.player.reset_turn(res.player) # Reset player's turn
+		res.enemy.reset_turn(res.enemy) # Reset enemy's turn
 		
 		_check_victory_tile_ownership()
 		_check_level_end()
 
 
-func increment_victory_points() -> void:
-	pass
+## Increments victory points for a player
+func increment_victory_points(is_player: bool) -> void:
+	serv.increment_victory_points(is_player)
 
 
+## Checks how many victory tiles are occupied by player vs enemy.
+## Increments player victory points by 1 if player controls more tiles and vice versa.
 func _check_victory_tile_ownership() -> void:
-	pass
+	serv._check_victory_tile_ownership()
 
-
+## Checks whether player or enemy has 3 points or no longer has any units left and ends the game if so
 func _check_level_end() -> void:
-	pass
+	serv._check_level_end()
 
 
+## Checks whether all units from a unit group are dead
+func _is_all_dead(unit_group: Participants) -> bool:
+	return serv._is_all_dead(unit_group)
+
+
+## TODO: show level end (win/lose) screen
 func _end_level() -> void:
 	pass
 #endregion

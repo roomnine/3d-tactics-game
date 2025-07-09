@@ -33,15 +33,23 @@ static func tiles_into_static_bodies(tiles_obj: Node3D, tile_layout: TileLayout)
 		
 		_static_body.add_child(_t) # Add MeshInstance3D as a child of StaticBody3D
 		_static_body.set_script(load(TILE_SRC)) # Attach TacticsTile script to StaticBody3D
-		_static_body.configure_tile() # Initialize tile (raycast, hover, state)
 		
-		# Convert index to "TileN"
-		var tile_index_name = "Tile%d" % i
-		if tile_layout.tile_layout.has(i):
-			_static_body.effect = tile_layout.tile_layout[i]
+		var tile_name := _static_body.name.replace("_col", "")
+		var index := GetTileIndexFromName.get_tile_index_from_name(tile_name)
+
+		if index != -1:
+			_static_body.name = "Tile%d_col" % index
+			if tile_layout.tile_layout.has(index):
+				_static_body.effect = tile_layout.tile_layout[index]
+				#if _static_body.effect and _static_body.effect.is_victory_tile:
+					#print("✅ Tile ", index, " marked as a VICTORY TILE")
+					#print("This tile's name is: ", _static_body.name)
+			else:
+				print("Tile%d => NO EFFECT" % index)
 		else:
-			_static_body.effect = null
-			print(tile_index_name, "=> NO EFFECT")
+			print("⚠️ Could not determine index from: ", _static_body.name)
+		
+		_static_body.configure_tile() # Initialize tile (raycast, hover, state)
 		
 		_static_body.set_process(true) # Enable _process for the tile
 		tiles_obj.add_child(_static_body) # Add configured StaticBody3D back to tiles_obj

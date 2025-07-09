@@ -7,13 +7,15 @@ extends Resource
 ## Player wins the level if they have 3 score
 ## Player loses the level if they have -3 score
 
-## Emitted when a participant gains a victory point
-signal called_increment_victory_points(participant: Participants)
-
 ## Stores the current score of player
 var player_score: int = 0
-
-## Triggers the incrementation of victory points
-## [param participant] The target participant who is gaining the victory points
-func increment_victory_points(participant: Participants) -> void:
-	called_increment_victory_points.emit(participant)
+## Current turn stage (0: init, 1: handle, 2: end)
+var turn_stage: int = 0
+## Reference to the PlayerUnits node
+var player: PlayerUnits = null
+## Reference to the EnemyUnits node
+var enemy: EnemyUnits
+## Reference to the Participants node
+var participant: Participants
+## Reference to the TacticsBoard node
+var board: TacticsBoard

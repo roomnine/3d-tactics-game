@@ -239,3 +239,8 @@ func is_adjacent_to_enemy(tile: Tile, enemy_units: Array) -> bool:
 		if enemy_tile and tile in enemy_tile.get_neighboring_tiles(enemy.stats.jump):
 			return true
 	return false
+
+
+## Checks if a unit is on a victory tile
+func is_unit_on_victory_tile(unit: DefaultUnit) -> bool:
+	return unit.get_tile().effect.is_victory_tile

@@ -92,3 +92,8 @@ func mark_targetable_tiles(root: Tile, distance: float) -> void:
 ## [param distance] The maximum attack distance
 func mark_target_preview_tiles(root: Tile, distance: float) -> void:
 	serv.mark_target_preview_tiles(self, root, distance)
+
+
+## Determines whether a unit is on a victory tile
+func is_unit_on_victory_tile(unit: DefaultUnit) -> bool:
+	return serv.is_unit_on_victory_tile(unit)
